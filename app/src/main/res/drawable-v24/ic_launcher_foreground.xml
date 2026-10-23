@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Standort-Pin mit Herz: Pflege kommt zu dir -->
+    <group
+        android:pivotX="54"
+        android:pivotY="54"
+        android:scaleX="1.15"
+        android:scaleY="1.15">
+        <group android:translateY="2.2">
+            <path
+                android:fillColor="#24000000"
+                android:pathData="M54,78 C54,78 36,60.5 36,46 A18,18 0 1,1 72,46 C72,60.5 54,78 54,78 Z" />
+        </group>
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M54,78 C54,78 36,60.5 36,46 A18,18 0 1,1 72,46 C72,60.5 54,78 54,78 Z" />
+        <path
+            android:fillColor="#FF16937F"
+            android:pathData="M54,53.5 C54,53.5 45.5,47.8 45.5,42.6 C45.5,39.8 47.7,37.6 50.4,37.6 C52,37.6 53.3,38.4 54,39.7 C54.7,38.4 56,37.6 57.6,37.6 C60.3,37.6 62.5,39.8 62.5,42.6 C62.5,47.8 54,53.5 54,53.5 Z" />
+    </group>
+</vector>
