@@ -1,0 +1,16 @@
+*.iml
+.gradle
+.kotlin
+/local.properties
+.idea
+.DS_Store
+/build
+/app/build
+/captures
+.externalNativeBuild
+.cxx
+node_modules/
+
+# Firebase-Schlüssel nie committen
+scripts/migration/node_modules/
+scripts/migration/*serviceAccount*.json
