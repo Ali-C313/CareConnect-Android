@@ -290,6 +290,6 @@ oder in Android Studio die Run-Konfiguration `app` starten.
 **Ali Chehab**<br/>
 Abschlussprojekt im Android-Modul am Syntax Institut
 
-[![GitHub](https://img.shields.io/badge/GitHub-Ali313-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Ali313)
+[![GitHub](https://img.shields.io/badge/GitHub-Ali--C313-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Ali-C313)
 
 </div>
