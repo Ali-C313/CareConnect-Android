@@ -1,0 +1,201 @@
+rules_version = '2';
+
+// In der Firebase-Konsole unter Firestore Database -> Regeln einfügen.
+// Alle Daten liegen unter organizations/{orgId}. Wer nicht Mitglied ist, sieht nichts.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isSelf(id) {
+      return signedIn() && request.auth.uid == id;
+    }
+
+    function memberPath(orgId) {
+      return /databases/$(database)/documents/organizations/$(orgId)/members/$(request.auth.uid);
+    }
+
+    function invitePath(code) {
+      return /databases/$(database)/documents/invites/$(code);
+    }
+
+    function isMember(orgId) {
+      return signedIn() && exists(memberPath(orgId));
+    }
+
+    function isStaff(orgId) {
+      return isMember(orgId) && get(memberPath(orgId)).data.role in ['admin', 'staff'];
+    }
+
+    function isAdmin(orgId) {
+      return isMember(orgId) && get(memberPath(orgId)).data.role == 'admin';
+    }
+
+    // Rolle nach dem Schreiben, weil Beitritt und Gründung als Batch laufen
+    function roleAfter(orgId) {
+      return getAfter(memberPath(orgId)).data.role;
+    }
+
+    match /users/{userId} {
+      allow read, create, update: if isSelf(userId);
+      allow delete: if false;
+
+      // Eigene Beitrittsanfragen (nur die IDs, Status steht bei der Organisation)
+      match /joinRequests/{orgId} {
+        allow read, write: if isSelf(userId);
+      }
+
+      match /memberships/{orgId} {
+        allow read: if isSelf(userId);
+        // Nur zusammen mit dem passenden Mitglieds-Eintrag
+        allow create: if isSelf(userId)
+          && existsAfter(memberPath(orgId))
+          && roleAfter(orgId) == request.resource.data.role;
+        allow update: if false;
+        allow delete: if isSelf(userId);
+      }
+    }
+
+    // Einladungscodes: einzeln abrufbar, aber nicht auflistbar
+    match /invites/{code} {
+      allow get: if signedIn();
+      allow list, update: if false;
+      allow create: if signedIn() && roleAfter(request.resource.data.orgId) == 'admin';
+      allow delete: if isAdmin(resource.data.orgId);
+    }
+
+    // Öffentliche Liste für die Suche, pflegt die Leitung
+    match /directory/{orgId} {
+      allow read: if signedIn();
+      allow create, update: if signedIn() && roleAfter(orgId) == 'admin';
+      allow delete: if isAdmin(orgId);
+    }
+
+    match /organizations/{orgId} {
+      allow read: if isMember(orgId);
+      allow create: if signedIn() && request.resource.data.ownerId == request.auth.uid;
+      allow update: if isAdmin(orgId);
+      allow delete: if false;
+
+      match /members/{memberId} {
+        allow read: if isMember(orgId);
+        allow create: if isSelf(memberId) && (
+          // Wer gründet, wird Leitung
+          (request.resource.data.role == 'admin'
+            && getAfter(/databases/$(database)/documents/organizations/$(orgId)).data.ownerId == request.auth.uid)
+          // Alle anderen nur mit einem gültigen Code dieser Organisation und passender Rolle
+          || (request.resource.data.inviteCode is string
+            && get(invitePath(request.resource.data.inviteCode)).data.orgId == orgId
+            && get(invitePath(request.resource.data.inviteCode)).data.role == request.resource.data.role)
+        )
+        // Leitung nimmt eine Beitrittsanfrage als Patient an
+        || (isAdmin(orgId)
+          && request.resource.data.role == 'patient'
+          && exists(/databases/$(database)/documents/organizations/$(orgId)/joinRequests/$(memberId)));
+
+        // Leitung ändert nur Mitarbeiter <-> Leitung, nie sich selbst
+        allow update: if isAdmin(orgId)
+          && !isSelf(memberId)
+          && resource.data.role in ['admin', 'staff']
+          && request.resource.data.role in ['admin', 'staff']
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role']);
+
+        // Leitung entfernt andere, jeder darf selbst austreten
+        allow delete: if (isAdmin(orgId) && !isSelf(memberId)) || isSelf(memberId);
+      }
+
+      match /joinRequests/{requestUid} {
+        allow read: if isSelf(requestUid) || isAdmin(orgId);
+        allow create: if isSelf(requestUid)
+          && !isMember(orgId)
+          && request.resource.data.status == 'pending';
+        allow update: if isAdmin(orgId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
+        allow delete: if isSelf(requestUid) || isAdmin(orgId);
+      }
+
+      // Kopie der Codes für die Liste in den Einstellungen
+      match /invites/{code} {
+        allow read, delete: if isAdmin(orgId);
+        allow create: if signedIn() && roleAfter(orgId) == 'admin';
+        allow update: if false;
+      }
+
+      match /employees/{employeeId} {
+        allow read: if isMember(orgId);
+        allow create: if isSelf(employeeId) && roleAfter(orgId) in ['admin', 'staff'];
+        allow update: if isSelf(employeeId) && isStaff(orgId);
+        allow delete: if false;
+
+        match /documents/{docId} {
+          allow read: if isStaff(orgId);
+          allow write: if isSelf(employeeId) && isStaff(orgId);
+        }
+      }
+
+      match /patients/{patientId} {
+        allow read: if isSelf(patientId) || isStaff(orgId);
+        allow create: if (isSelf(patientId) && roleAfter(orgId) == 'patient') || isAdmin(orgId);
+        allow update: if (isSelf(patientId) && isMember(orgId)) || isStaff(orgId);
+        allow delete: if false;
+
+        match /medicines/{id} {
+          allow read: if isSelf(patientId) || isStaff(orgId);
+          allow write: if isSelf(patientId) && isMember(orgId);
+        }
+
+        match /appointments/{id} {
+          allow read: if isSelf(patientId) || isStaff(orgId);
+          allow write: if isSelf(patientId) && isMember(orgId);
+        }
+      }
+
+      match /orders/{orderId} {
+        allow read: if isStaff(orgId)
+          || (isMember(orgId) && resource.data.patientId == request.auth.uid);
+
+        // Patienten dürfen nur offene Aufträge für sich selbst anlegen (Notfall)
+        allow create: if isStaff(orgId)
+          || (isMember(orgId)
+            && request.resource.data.patientId == request.auth.uid
+            && request.resource.data.state == 'offen');
+
+        // Offene Aufträge darf jeder Mitarbeiter ändern,
+        // angenommene nur der zugewiesene, erledigte niemand mehr
+        allow update: if isStaff(orgId)
+          && resource.data.state != 'erledigt'
+          && (resource.data.state == 'offen' || resource.data.employeeId == request.auth.uid);
+
+        allow delete: if isStaff(orgId)
+          && (resource.data.state == 'offen' || resource.data.employeeId == request.auth.uid);
+      }
+
+      // Verordnungen liegen doppelt: bei der Praxis (fromOrgId) und beim Pflegedienst (toOrgId)
+      match /prescriptions/{prescriptionId} {
+        allow read: if isStaff(orgId)
+          || (isMember(orgId) && resource.data.patientId == request.auth.uid);
+
+        // Praxis legt an, aber nur wenn der Patient diesen Pflegedienst freigegeben hat
+        allow create: if isStaff(request.resource.data.fromOrgId)
+          && (orgId == request.resource.data.fromOrgId || orgId == request.resource.data.toOrgId)
+          && request.resource.data.status == 'offen'
+          && exists(/databases/$(database)/documents/organizations/$(request.resource.data.toOrgId)/members/$(request.resource.data.patientId))
+          && get(/databases/$(database)/documents/organizations/$(request.resource.data.fromOrgId)/patients/$(request.resource.data.patientId)).data.linkedOrgIds.hasAny([request.resource.data.toOrgId]);
+
+        // Status ändert nur der Pflegedienst, in beiden Kopien
+        allow update: if isStaff(resource.data.toOrgId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'orderId']);
+
+        // Zurückziehen kann die Praxis, solange noch nichts passiert ist
+        allow delete: if isStaff(resource.data.fromOrgId) && resource.data.status == 'offen';
+      }
+
+      match /employeeLocations/{employeeId} {
+        allow read: if isMember(orgId);
+        allow write: if isSelf(employeeId) && isStaff(orgId);
+      }
+    }
+  }
+}
