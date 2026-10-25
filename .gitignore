@@ -14,3 +14,4 @@ node_modules/
 # Firebase-Schlüssel nie committen
 scripts/migration/node_modules/
 scripts/migration/*serviceAccount*.json
+app/google-services.json
