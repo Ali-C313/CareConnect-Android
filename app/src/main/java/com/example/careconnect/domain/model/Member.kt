@@ -3,6 +3,7 @@ package com.example.careconnect.domain.model
 import com.example.careconnect.R
 import com.example.careconnect.util.ResourceHelper
 
+// Mitglied einer Organisation mit Rolle
 data class Member(
     val uid: String,
     val firstName: String,
