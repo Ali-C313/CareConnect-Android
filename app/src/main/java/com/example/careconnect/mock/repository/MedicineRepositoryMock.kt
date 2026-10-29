@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
+// Beispielmedikamente für die Previews
 class MedicineRepositoryMock : MedicineRepository {
 
     private val medicines = MutableStateFlow(MockData.medicines)
