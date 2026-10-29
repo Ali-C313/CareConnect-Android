@@ -41,6 +41,7 @@ import com.example.careconnect.util.ResourceHelper
 import com.example.careconnect.util.StringHelper
 import org.koin.androidx.compose.koinViewModel
 
+/** Suche nach Mitarbeitern, Patienten und Aufträgen */
 @Composable
 fun SearchScreen(
     onBack: () -> Unit,
