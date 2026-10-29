@@ -41,16 +41,13 @@ class AppointmentRepositoryImpl(
 
     override suspend fun addAppointment(patientId: String, appointment: Appointment): Result<Unit> = runCatching {
         appointmentsRef(patientId).add(appointment.toDto()).await()
-        Unit
     }
 
     override suspend fun updateAppointment(patientId: String, appointment: Appointment): Result<Unit> = runCatching {
         appointmentsRef(patientId).document(appointment.id).set(appointment.toDto()).await()
-        Unit
     }
 
     override suspend fun deleteAppointment(patientId: String, appointmentId: String): Result<Unit> = runCatching {
         appointmentsRef(patientId).document(appointmentId).delete().await()
-        Unit
     }
 }
