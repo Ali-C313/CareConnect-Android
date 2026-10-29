@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.await
 
+// Medikamente unter patients/{id}/medicines
 class MedicineRepositoryImpl(
     private val db: FirebaseFirestore,
     private val session: OrgSession
