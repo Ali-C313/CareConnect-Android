@@ -33,7 +33,7 @@ import com.example.careconnect.mock.repository.AuthRepositoryMock
 import com.example.careconnect.mock.repository.EmployeeRepositoryMock
 import com.example.careconnect.mock.repository.OrderRepositoryMock
 import com.example.careconnect.mock.repository.PatientRepositoryMock
-import com.example.careconnect.platform.tourUrl
+import com.example.careconnect.util.MapsHelper.tourUrl
 import com.example.careconnect.ui.components.CareTopBar
 import com.example.careconnect.ui.components.StatTile
 import com.example.careconnect.ui.theme.CareConnectTheme
@@ -44,6 +44,7 @@ import com.example.careconnect.ui.theme.color
 import com.example.careconnect.util.UriHelper.openSafely
 import org.koin.androidx.compose.koinViewModel
 
+/** Startseite der Mitarbeiter mit Status, Tour und Team */
 @Composable
 fun HomeScreen(
     onSearchClick: () -> Unit,
