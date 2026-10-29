@@ -5,7 +5,7 @@ import com.example.careconnect.domain.model.Coordinate
 import com.example.careconnect.domain.model.RouteInfo
 import com.example.careconnect.domain.model.distanceTo
 import com.example.careconnect.domain.repository.GeoRepository
-import com.example.careconnect.platform.PlatformGeocoder
+import com.example.careconnect.device.AddressGeocoder
 import com.example.careconnect.remote.Secrets
 import com.example.careconnect.remote.api.GeoapifyApiService
 import com.example.careconnect.remote.api.OsrmApiService
@@ -18,7 +18,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 class GeoRepositoryImpl(
     private val geoapifyApi: GeoapifyApiService,
     private val osrmApi: OsrmApiService,
-    private val platformGeocoder: PlatformGeocoder
+    private val addressGeocoder: AddressGeocoder
 ) : GeoRepository {
 
     private val apiKey = Secrets.GEOAPIFY_API_KEY
@@ -37,7 +37,7 @@ class GeoRepositoryImpl(
         if (address.isBlank()) return@runCatching null
 
         // Erst der Geocoder vom Handy (braucht keinen Key), dann Geoapify
-        val local = withTimeoutOrNull(10_000) { runCatching { platformGeocoder.geocode(address) }.getOrNull() }
+        val local = withTimeoutOrNull(10_000) { runCatching { addressGeocoder.geocode(address) }.getOrNull() }
         if (local != null) return@runCatching local
         if (!hasApiKey) return@runCatching null
 
