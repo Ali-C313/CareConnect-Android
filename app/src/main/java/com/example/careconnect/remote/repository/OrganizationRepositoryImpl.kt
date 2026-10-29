@@ -122,7 +122,6 @@ class OrganizationRepositoryImpl(
         batch.delete(memberRef(orgId, uid))
         batch.delete(membershipRef(uid, orgId))
         batch.commit().await()
-        Unit
     }
 
     override suspend fun searchOrganizations(query: String): Result<List<Organization>> = runCatching {
@@ -148,7 +147,6 @@ class OrganizationRepositoryImpl(
         } else {
             directoryRef(orgId).delete().await()
         }
-        Unit
     }
 
     override suspend fun sendJoinRequest(profile: UserProfile, organization: Organization): Result<Unit> = runCatching {
@@ -174,7 +172,6 @@ class OrganizationRepositoryImpl(
         )
         batch.set(myRequestRef(profile.uid, organization.id), JoinRequestRefDto(organization.id, now))
         batch.commit().await()
-        Unit
     }
 
     // Eigene Anfragen: IDs beim Nutzer, Status bei der Organisation
@@ -204,7 +201,6 @@ class OrganizationRepositoryImpl(
         batch.delete(requestRef(orgId, uid))
         batch.delete(myRequestRef(uid, orgId))
         batch.commit().await()
-        Unit
     }
 
     // Leitung hat angenommen -> Mitgliedschaft beim Nutzer eintragen und Anfrage aufräumen
@@ -218,7 +214,6 @@ class OrganizationRepositoryImpl(
         batch.delete(requestRef(request.orgId, uid))
         batch.delete(myRequestRef(uid, request.orgId))
         batch.commit().await()
-        Unit
     }
 
     override fun observeJoinRequests(orgId: String): Flow<List<JoinRequest>> =
@@ -257,12 +252,10 @@ class OrganizationRepositoryImpl(
         )
         batch.update(requestRef(request.orgId, request.uid), "status", JoinRequestStatus.ACCEPTED.value)
         batch.commit().await()
-        Unit
     }
 
     override suspend fun declineJoinRequest(request: JoinRequest): Result<Unit> = runCatching {
         requestRef(request.orgId, request.uid).update("status", JoinRequestStatus.DECLINED.value).await()
-        Unit
     }
 
     override fun observeMembers(orgId: String): Flow<List<Member>> =
@@ -276,12 +269,10 @@ class OrganizationRepositoryImpl(
 
     override suspend fun updateMemberRole(orgId: String, uid: String, role: MemberRole): Result<Unit> = runCatching {
         memberRef(orgId, uid).update("role", role.value).await()
-        Unit
     }
 
     override suspend fun removeMember(orgId: String, uid: String): Result<Unit> = runCatching {
         memberRef(orgId, uid).delete().await()
-        Unit
     }
 
     override suspend fun findInvite(code: String): Result<Invite?> = runCatching {
@@ -295,7 +286,6 @@ class OrganizationRepositoryImpl(
         val batch = db.batch()
         addMember(batch, invite.orgId, invite.orgName, invite.orgType, profile, invite.role, invite.code)
         batch.commit().await()
-        Unit
     }
 
     override suspend fun createInvite(orgId: String, role: MemberRole): Result<String> = runCatching {
@@ -318,7 +308,6 @@ class OrganizationRepositoryImpl(
         batch.delete(inviteRef(code))
         batch.delete(db.org(orgId).collection(CollectionNames.INVITES).document(code))
         batch.commit().await()
-        Unit
     }
 
     // Mitglied + Profil in der Organisation + Eintrag beim Nutzer
