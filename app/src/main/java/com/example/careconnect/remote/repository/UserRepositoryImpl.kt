@@ -49,11 +49,9 @@ class UserRepositoryImpl(
             createdAt = Timestamp.now()
         )
         userRef(profile.uid).set(dto, SetOptions.merge()).await()
-        Unit
     }
 
     override suspend fun setActiveOrg(uid: String, orgId: String): Result<Unit> = runCatching {
         userRef(uid).update("activeOrgId", orgId).await()
-        Unit
     }
 }
