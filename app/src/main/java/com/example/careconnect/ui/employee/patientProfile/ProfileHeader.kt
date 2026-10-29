@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.example.careconnect.R
 import com.example.careconnect.domain.model.Patient
 import com.example.careconnect.mock.MockData
-import com.example.careconnect.platform.mapsSearchUrl
+import com.example.careconnect.util.MapsHelper.mapsSearchUrl
 import com.example.careconnect.ui.components.AvatarView
 import com.example.careconnect.ui.components.SectionCard
 import com.example.careconnect.ui.theme.CareConnectTheme
