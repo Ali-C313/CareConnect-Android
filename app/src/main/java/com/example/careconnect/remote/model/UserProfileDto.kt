@@ -16,6 +16,7 @@ data class UserProfileDto(
     val activeOrgId: String? = null,
     val createdAt: Timestamp? = null
 )
+
 fun UserProfileDto.toUserProfile(uid: String): UserProfile = UserProfile(
     uid = uid,
     firstName = firstName ?: "",
