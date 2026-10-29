@@ -2,7 +2,7 @@ package com.example.careconnect.service
 
 import com.example.careconnect.domain.model.Coordinate
 import com.example.careconnect.domain.repository.LocationRepository
-import com.example.careconnect.platform.LocationTracker
+import com.example.careconnect.device.LocationTracker
 import com.example.careconnect.util.DateHelper.currentTimeMillis
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
