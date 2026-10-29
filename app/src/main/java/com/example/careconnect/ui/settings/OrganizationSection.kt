@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.example.careconnect.R
 import com.example.careconnect.domain.model.MemberRole
 import com.example.careconnect.domain.model.Membership
-import com.example.careconnect.mock.platform.LocationTrackerMock
+import com.example.careconnect.mock.device.LocationTrackerMock
 import com.example.careconnect.mock.repository.AuthRepositoryMock
 import com.example.careconnect.mock.repository.EmployeeRepositoryMock
 import com.example.careconnect.mock.repository.LocationRepositoryMock
