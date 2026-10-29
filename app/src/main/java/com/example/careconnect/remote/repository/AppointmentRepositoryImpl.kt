@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.await
 
+// Termine unter patients/{id}/appointments
 class AppointmentRepositoryImpl(
     private val db: FirebaseFirestore,
     private val session: OrgSession
