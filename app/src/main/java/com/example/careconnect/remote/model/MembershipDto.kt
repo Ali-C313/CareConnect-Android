@@ -12,6 +12,7 @@ data class MembershipDto(
     val role: String? = null,
     val joinedAt: Timestamp? = null
 )
+
 fun MembershipDto.toMembership(orgId: String): Membership = Membership(
     orgId = orgId,
     orgName = orgName ?: "",
