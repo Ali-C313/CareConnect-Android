@@ -144,7 +144,7 @@ fun OrganizationSection(
             onDismissRequest = viewModel::dismissMessage,
             title = { Text(stringResource(R.string.organisation)) },
             text = { Text(text) },
-            confirmButton = { TextButton(onClick = viewModel::dismissMessage) { Text("OK") } }
+            confirmButton = { TextButton(onClick = viewModel::dismissMessage) { Text(stringResource(R.string.ok)) } }
         )
     }
 }
