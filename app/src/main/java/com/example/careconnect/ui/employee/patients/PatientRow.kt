@@ -26,6 +26,7 @@ import com.example.careconnect.mock.MockData
 import com.example.careconnect.ui.components.SectionCard
 import com.example.careconnect.ui.theme.CareConnectTheme
 
+/** Ein Patient in der Liste */
 @Composable
 fun PatientRow(
     patient: Patient,
