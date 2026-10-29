@@ -19,6 +19,7 @@ import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.util.StringHelper
 import com.example.careconnect.util.UriHelper.openSafely
 
+/** Kontaktdaten des Patienten */
 @Composable
 fun ContactSection(patient: Patient) {
     val uriHandler = LocalUriHandler.current
