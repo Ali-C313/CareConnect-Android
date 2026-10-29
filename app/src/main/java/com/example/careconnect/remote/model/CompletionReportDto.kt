@@ -3,6 +3,7 @@ package com.example.careconnect.remote.model
 import com.example.careconnect.domain.model.CompletionReport
 import com.google.firebase.Timestamp
 
+// Leistungsnachweis im Auftrag (Feld "report")
 data class CompletionReportDto(
     val note: String? = null,
     val signature: String? = null,
