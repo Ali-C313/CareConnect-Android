@@ -1,4 +1,4 @@
-package com.example.careconnect.platform
+package com.example.careconnect.device
 
 // Lokale Benachrichtigung über den NotificationManager
 interface Notifier {
