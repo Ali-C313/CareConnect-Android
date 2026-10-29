@@ -19,7 +19,7 @@ import com.example.careconnect.domain.model.MapMarker
 import com.example.careconnect.domain.model.Patient
 import com.example.careconnect.domain.model.RouteInfo
 import com.example.careconnect.mock.MockData
-import com.example.careconnect.platform.mapsDirectionsUrl
+import com.example.careconnect.util.MapsHelper.mapsDirectionsUrl
 import com.example.careconnect.ui.components.CareMap
 import com.example.careconnect.ui.components.InfoRow
 import com.example.careconnect.ui.components.SectionCard
