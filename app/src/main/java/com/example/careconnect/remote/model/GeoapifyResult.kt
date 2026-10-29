@@ -9,10 +9,12 @@ data class GeoapifyResult(
     val lat: Double? = null,
     val lon: Double? = null
 )
+
 fun GeoapifyResult.toAddressSuggestion(): AddressSuggestion = AddressSuggestion(
     formatted = formatted,
     coordinate = toCoordinate()
 )
+
 fun GeoapifyResult.toCoordinate(): Coordinate? {
     val latitude = lat ?: return null
     val longitude = lon ?: return null
