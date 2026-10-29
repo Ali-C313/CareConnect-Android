@@ -11,6 +11,7 @@ data class Coordinate(
     val latitude: Double,
     val longitude: Double
 )
+
 // Luftlinie in Metern
 fun Coordinate.distanceTo(other: Coordinate): Double {
     val dLat = (other.latitude - latitude).toRadians()
@@ -19,6 +20,7 @@ fun Coordinate.distanceTo(other: Coordinate): Double {
             cos(latitude.toRadians()) * cos(other.latitude.toRadians()) * sin(dLon / 2).pow(2)
     return 2 * 6_371_000.0 * atan2(sqrt(a), sqrt(1 - a))
 }
+
 // Route erst neu holen, wenn sich der Mitarbeiter ein Stück bewegt hat
 fun isSameRouteRequest(
     old: Pair<Coordinate?, Coordinate?>,
@@ -30,4 +32,5 @@ fun isSameRouteRequest(
     if (from == null || to == null) return from == to
     return from.distanceTo(to) < 80
 }
+
 private fun Double.toRadians() = this * PI / 180.0
