@@ -33,6 +33,7 @@ import com.example.careconnect.mock.repository.AuthRepositoryMock
 import com.example.careconnect.mock.repository.GeoRepositoryMock
 import com.example.careconnect.ui.components.CareTopBar
 import com.example.careconnect.ui.components.EmptyStateView
+import com.example.careconnect.ui.components.ErrorDialog
 import com.example.careconnect.ui.theme.CareConnectTheme
 import org.koin.androidx.compose.koinViewModel
 
@@ -43,6 +44,7 @@ fun AppointmentsScreen(
     viewModel: AppointmentsViewModel = koinViewModel()
 ) {
     val appointments by viewModel.appointments.collectAsState()
+    val errorMessage by viewModel.errorMessage.collectAsState()
     var showEditSheet by remember { mutableStateOf(false) }
     var selectedAppointment by remember { mutableStateOf<Appointment?>(null) }
 
@@ -105,6 +107,8 @@ fun AppointmentsScreen(
             AppointmentDetails(appointment)
         }
     }
+
+    ErrorDialog(message = errorMessage, onDismiss = viewModel::dismissError)
 }
 
 @Preview
