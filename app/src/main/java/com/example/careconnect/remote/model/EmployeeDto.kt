@@ -4,6 +4,7 @@ import com.example.careconnect.domain.model.Employee
 import com.example.careconnect.domain.model.StaffStatus
 import com.google.firebase.Timestamp
 
+// organizations/{id}/employees
 data class EmployeeDto(
     val uid: String? = null,
     val firstName: String? = null,
