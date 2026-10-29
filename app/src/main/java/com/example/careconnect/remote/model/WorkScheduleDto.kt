@@ -2,6 +2,7 @@ package com.example.careconnect.remote.model
 
 import com.example.careconnect.domain.model.WorkSchedule
 
+// Arbeitszeiten im Mitarbeiter-Dokument
 data class WorkScheduleDto(
     val weeklyHours: Int? = null,
     val shiftStart: String? = null,
