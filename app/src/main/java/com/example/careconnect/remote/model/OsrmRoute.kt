@@ -9,6 +9,7 @@ data class OsrmRoute(
     val duration: Double = 0.0,
     val geometry: OsrmGeometry = OsrmGeometry()
 )
+
 fun OsrmRoute.toRouteInfo(): RouteInfo = RouteInfo(
     distanceMeters = distance,
     durationSeconds = duration,
