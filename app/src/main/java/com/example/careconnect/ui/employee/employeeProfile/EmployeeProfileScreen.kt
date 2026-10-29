@@ -43,6 +43,7 @@ import com.example.careconnect.domain.model.EmployeeDocument
 import com.example.careconnect.mock.MockData
 import com.example.careconnect.mock.repository.EmployeeRepositoryMock
 import com.example.careconnect.ui.components.CareTopBar
+import com.example.careconnect.ui.components.ErrorDialog
 import com.example.careconnect.ui.components.LoadingView
 import com.example.careconnect.ui.components.SectionCard
 import com.example.careconnect.ui.theme.CareConnectTheme
@@ -162,14 +163,7 @@ fun EmployeeProfileScreen(
         )
     }
 
-    errorMessage?.let { message ->
-        AlertDialog(
-            onDismissRequest = viewModel::dismissError,
-            title = { Text(stringResource(R.string.fehler)) },
-            text = { Text(message) },
-            confirmButton = { TextButton(onClick = viewModel::dismissError) { Text("OK") } }
-        )
-    }
+    ErrorDialog(message = errorMessage, onDismiss = viewModel::dismissError)
 }
 
 @Preview
