@@ -4,6 +4,7 @@ import com.example.careconnect.domain.model.Order
 import com.example.careconnect.domain.model.OrderState
 import com.google.firebase.Timestamp
 
+// organizations/{id}/orders
 data class OrderDto(
     val id: String? = null,
     val state: String? = null,
