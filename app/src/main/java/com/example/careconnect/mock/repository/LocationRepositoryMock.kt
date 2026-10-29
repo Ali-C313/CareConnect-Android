@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
+// Fester Standort für die Previews
 class LocationRepositoryMock : LocationRepository {
 
     private val location = MutableStateFlow<Coordinate?>(MockData.employeeLocation)
