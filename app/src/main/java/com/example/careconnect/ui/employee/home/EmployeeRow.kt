@@ -21,6 +21,7 @@ import com.example.careconnect.ui.theme.color
 import com.example.careconnect.util.ResourceHelper
 import com.example.careconnect.util.StringHelper
 
+/** Ein Mitarbeiter in der Team-Übersicht */
 @Composable
 fun EmployeeRow(
     employee: Employee,
