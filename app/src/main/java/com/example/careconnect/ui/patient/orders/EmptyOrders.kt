@@ -20,6 +20,7 @@ import com.example.careconnect.R
 import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.ui.theme.color
 
+/** Anzeige, wenn es noch keine Aufträge gibt */
 @Composable
 fun EmptyOrders() {
     Column(
