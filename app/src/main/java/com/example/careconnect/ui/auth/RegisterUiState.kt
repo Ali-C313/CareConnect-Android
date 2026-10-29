@@ -2,6 +2,7 @@ package com.example.careconnect.ui.auth
 
 import com.example.careconnect.domain.model.AddressSuggestion
 
+// Eingaben und Fehler bei der Registrierung
 data class RegisterUiState(
     val firstName: String = "",
     val lastName: String = "",
