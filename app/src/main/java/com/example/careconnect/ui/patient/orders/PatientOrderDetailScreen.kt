@@ -40,6 +40,7 @@ import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.util.DateHelper.toDateTimeString
 import org.koin.androidx.compose.koinViewModel
 
+/** Auftrag mit Status-Verlauf, Live-Karte und Nachweis */
 @Composable
 fun PatientOrderDetailScreen(
     onBack: () -> Unit,
