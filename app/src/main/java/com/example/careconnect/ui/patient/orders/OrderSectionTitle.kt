@@ -12,7 +12,7 @@ import com.example.careconnect.ui.theme.CareConnectTheme
 
 /** Überschrift mit Anzahl über einer Auftragsgruppe */
 @Composable
-fun SectionTitle(title: String, count: Int) {
+fun OrderSectionTitle(title: String, count: Int) {
     Text(
         text = if (count > 0) "$title ($count)" else title,
         style = MaterialTheme.typography.titleMedium,
@@ -23,8 +23,8 @@ fun SectionTitle(title: String, count: Int) {
 
 @Preview
 @Composable
-fun SectionTitlePreview() {
+fun OrderSectionTitlePreview() {
     CareConnectTheme(darkTheme = false) {
-        SectionTitle(title = "Offen", count = 2)
+        OrderSectionTitle(title = "Offen", count = 2)
     }
 }
