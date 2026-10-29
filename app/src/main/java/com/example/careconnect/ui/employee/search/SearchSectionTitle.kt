@@ -11,7 +11,7 @@ import com.example.careconnect.ui.theme.CareConnectTheme
 
 /** Überschrift über einer Gruppe in der Suche */
 @Composable
-fun SectionTitle(title: String) {
+fun SearchSectionTitle(title: String) {
     Text(
         text = title,
         style = MaterialTheme.typography.titleSmall,
@@ -22,8 +22,8 @@ fun SectionTitle(title: String) {
 
 @Preview
 @Composable
-fun SectionTitlePreview() {
+fun SearchSectionTitlePreview() {
     CareConnectTheme(darkTheme = false) {
-        SectionTitle(title = "Patienten")
+        SearchSectionTitle(title = "Patienten")
     }
 }
