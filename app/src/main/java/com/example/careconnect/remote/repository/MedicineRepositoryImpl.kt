@@ -39,11 +39,9 @@ class MedicineRepositoryImpl(
 
     override suspend fun addMedicine(patientId: String, medicine: MedicineEntry): Result<Unit> = runCatching {
         medicinesRef(patientId).add(medicine.toDto()).await()
-        Unit
     }
 
     override suspend fun deleteMedicine(patientId: String, medicineId: String): Result<Unit> = runCatching {
         medicinesRef(patientId).document(medicineId).delete().await()
-        Unit
     }
 }
