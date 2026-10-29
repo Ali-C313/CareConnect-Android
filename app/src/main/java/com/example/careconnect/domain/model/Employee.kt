@@ -1,5 +1,6 @@
 package com.example.careconnect.domain.model
 
+// Mitarbeiter einer Organisation
 data class Employee(
     val id: String,
     val firstName: String = "",
