@@ -68,7 +68,6 @@ class OrderRepositoryImpl(
     override suspend fun createOrder(order: Order): Result<Unit> = runCatching {
         val id = order.id.ifEmpty { UUID.randomUUID().toString() }
         ordersRef().document(id).set(order.copy(id = id).toDto()).await()
-        Unit
     }
 
     override suspend fun updateOrder(
@@ -86,7 +85,6 @@ class OrderRepositoryImpl(
                 "dueDate" to dueDate.toTimestamp()
             )
         ).await()
-        Unit
     }
 
     // Transaktion, damit nicht zwei Mitarbeiter denselben Auftrag annehmen
@@ -116,7 +114,6 @@ class OrderRepositoryImpl(
             )
             Unit
         }.await()
-        Unit
     }
 
     // Abschließen mit Leistungsnachweis (Notiz + Unterschrift)
@@ -132,7 +129,6 @@ class OrderRepositoryImpl(
                 "report.completedByName" to report.completedByName
             )
         ).await()
-        Unit
     }
 
     override suspend fun createOrders(orders: List<Order>): Result<Unit> = runCatching {
@@ -149,7 +145,6 @@ class OrderRepositoryImpl(
 
     override suspend fun deleteOrder(id: String): Result<Unit> = runCatching {
         ordersRef().document(id).delete().await()
-        Unit
     }
 
     // Neueste zuerst, kaputte Dokumente überspringen
