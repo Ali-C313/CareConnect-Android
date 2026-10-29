@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
+// Beispieltermine für die Previews
 class AppointmentRepositoryMock : AppointmentRepository {
 
     private val appointments = MutableStateFlow(MockData.appointments)
