@@ -33,9 +33,9 @@ import com.example.careconnect.R
 import com.example.careconnect.mock.MockData
 import com.example.careconnect.ui.components.CareTextField
 import com.example.careconnect.ui.components.SignaturePad
-import com.example.careconnect.ui.components.SignatureStrokes
-import com.example.careconnect.ui.components.encodeSignature
 import com.example.careconnect.ui.theme.CareConnectTheme
+import com.example.careconnect.util.SignatureHelper.encodeSignature
+import com.example.careconnect.util.SignatureStrokes
 
 /**
  * Abschließen mit Leistungsnachweis: was wurde gemacht + Unterschrift des Patienten.
