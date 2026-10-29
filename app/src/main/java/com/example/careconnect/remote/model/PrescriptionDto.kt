@@ -22,6 +22,7 @@ data class PrescriptionDto(
     val status: String? = null,
     val orderId: String? = null
 )
+
 fun PrescriptionDto.toPrescription(id: String): Prescription = Prescription(
     id = id,
     fromOrgId = fromOrgId ?: "",
@@ -40,6 +41,7 @@ fun PrescriptionDto.toPrescription(id: String): Prescription = Prescription(
     status = PrescriptionStatus.fromValue(status),
     orderId = orderId ?: ""
 )
+
 fun Prescription.toDto(): PrescriptionDto = PrescriptionDto(
     fromOrgId = fromOrgId,
     fromOrgName = fromOrgName,
