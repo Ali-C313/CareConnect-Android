@@ -36,6 +36,7 @@ import com.example.careconnect.ui.theme.StatusOrange
 import com.example.careconnect.ui.theme.color
 import com.example.careconnect.util.DateHelper.toDateTimeString
 
+/** Ein Auftrag in der Liste */
 @Composable
 fun OrderRow(order: Order, onClick: () -> Unit) {
     val (icon, tint) = when (order.state) {
