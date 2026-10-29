@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
+// Einstellungen im Speicher für die Previews
 class SettingsRepositoryMock : SettingsRepository {
 
     private val _isDarkMode = MutableStateFlow(false)
