@@ -21,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.careconnect.R
 import com.example.careconnect.domain.model.Patient
 import com.example.careconnect.mock.MockData
-import com.example.careconnect.platform.mapsSearchUrl
+import com.example.careconnect.util.MapsHelper.mapsSearchUrl
 import com.example.careconnect.ui.components.InfoButtonRow
 import com.example.careconnect.ui.components.SectionCard
 import com.example.careconnect.ui.theme.CareConnectTheme
@@ -32,6 +32,7 @@ import com.example.careconnect.ui.theme.icon
 import com.example.careconnect.util.StringHelper
 import com.example.careconnect.util.UriHelper.openSafely
 
+/** Kontaktdaten des Patienten im Auftrag */
 @Composable
 fun PatientCard(patient: Patient) {
     val uriHandler = LocalUriHandler.current
