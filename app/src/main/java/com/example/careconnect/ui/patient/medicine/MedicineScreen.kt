@@ -32,6 +32,7 @@ import com.example.careconnect.mock.MockData
 import com.example.careconnect.mock.repository.AuthRepositoryMock
 import com.example.careconnect.mock.repository.MedicineRepositoryMock
 import com.example.careconnect.ui.components.CareTopBar
+import com.example.careconnect.ui.components.ErrorDialog
 import com.example.careconnect.ui.components.SectionCard
 import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.ui.theme.StatusPurple
@@ -43,6 +44,7 @@ fun MedicineScreen(
     viewModel: MedicineViewModel = koinViewModel()
 ) {
     val medicines by viewModel.medicines.collectAsState()
+    val errorMessage by viewModel.errorMessage.collectAsState()
     var showAddSheet by remember { mutableStateOf(false) }
 
     Column(
@@ -103,6 +105,8 @@ fun MedicineScreen(
             onSave = viewModel::addMedicine
         )
     }
+
+    ErrorDialog(message = errorMessage, onDismiss = viewModel::dismissError)
 }
 
 @Preview
