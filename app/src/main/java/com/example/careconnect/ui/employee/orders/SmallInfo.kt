@@ -18,6 +18,7 @@ import com.example.careconnect.mock.MockData
 import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.ui.theme.color
 
+/** Icon mit kurzem Text in der Auftragskarte */
 @Composable
 fun SmallInfo(
     icon: ImageVector,
