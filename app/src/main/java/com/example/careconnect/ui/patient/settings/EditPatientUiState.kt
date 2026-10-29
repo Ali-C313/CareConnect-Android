@@ -3,6 +3,7 @@ package com.example.careconnect.ui.patient.settings
 import com.example.careconnect.domain.model.AddressSuggestion
 import com.example.careconnect.domain.model.Patient
 
+// Eingaben im Profil-Editor der Patienten
 data class EditPatientUiState(
     val patient: Patient? = null,
     val addressSuggestions: List<AddressSuggestion> = emptyList(),
