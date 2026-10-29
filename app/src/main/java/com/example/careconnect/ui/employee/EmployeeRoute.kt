@@ -4,6 +4,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import kotlinx.serialization.Serializable
 
+// Routen der Mitarbeiter-App
 @Serializable
 sealed interface EmployeeRoute {
     @Serializable
