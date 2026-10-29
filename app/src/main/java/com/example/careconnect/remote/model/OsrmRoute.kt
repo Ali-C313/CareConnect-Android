@@ -3,6 +3,7 @@ package com.example.careconnect.remote.model
 import com.example.careconnect.domain.model.Coordinate
 import com.example.careconnect.domain.model.RouteInfo
 
+// Eine Route aus der OSRM-Antwort
 data class OsrmRoute(
     val distance: Double = 0.0,
     val duration: Double = 0.0,
