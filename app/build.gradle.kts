@@ -33,6 +33,10 @@ android {
     buildFeatures {
         compose = true
     }
+    // Log & Co. liefern in Unit-Tests Standardwerte statt einer Exception
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -89,6 +93,10 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
 
     // Karte & Standort
-    implementation(libs.osmdroid)
+    implementation(libs.maplibre.compose)
     implementation(libs.play.services.location)
+
+    // Tests
+    testImplementation(libs.junit)
+    testImplementation(libs.jetbrains.kotlinx.coroutines.test)
 }
