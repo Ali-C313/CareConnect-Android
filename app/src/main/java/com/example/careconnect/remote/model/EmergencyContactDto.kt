@@ -2,6 +2,7 @@ package com.example.careconnect.remote.model
 
 import com.example.careconnect.domain.model.EmergencyContact
 
+// Notfallkontakt im Patienten-Dokument
 data class EmergencyContactDto(
     val name: String? = null,
     val relation: String? = null,
