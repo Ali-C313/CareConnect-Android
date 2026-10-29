@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
+import com.example.careconnect.R
 import com.example.careconnect.domain.model.AddressSuggestion
 import com.example.careconnect.domain.model.Appointment
 import com.example.careconnect.domain.model.EmergencyContact
@@ -15,6 +16,7 @@ import com.example.careconnect.domain.repository.MedicineRepository
 import com.example.careconnect.domain.repository.PatientRepository
 import com.example.careconnect.ui.employee.EmployeeRoute
 import com.example.careconnect.util.DateHelper.currentTimeMillis
+import com.example.careconnect.util.ResourceHelper
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -42,6 +44,9 @@ class PatientProfileViewModel(
 
     // ID kommt über die Route
     private val patientId = MutableStateFlow<String?>(savedStateHandle.toRoute<EmployeeRoute.PatientProfile>().patientId)
+
+    private val _errorMessage = MutableStateFlow<String?>(null)
+    val errorMessage = _errorMessage.asStateFlow()
 
     val patient: StateFlow<Patient?> = patientId
         .filterNotNull()
@@ -114,7 +119,12 @@ class PatientProfileViewModel(
         val id = patientId.value ?: return
         viewModelScope.launch {
             patientRepo.saveEmergencyContact(id, _editContact.value)
-            onDone()
+                .onSuccess { onDone() }
+                .onFailure { e -> _errorMessage.update { ResourceHelper.getString(R.string.fehler_beim_speichern, e.message.orEmpty()) } }
         }
+    }
+
+    fun dismissError() {
+        _errorMessage.update { null }
     }
 }
