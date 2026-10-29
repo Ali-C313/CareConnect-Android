@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.careconnect.mock.MockData
 import com.example.careconnect.ui.theme.CareConnectTheme
 
+/** Zeile mit Icon und Text in der Verordnung */
 @Composable
 fun InfoLine(icon: ImageVector, text: String) {
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
