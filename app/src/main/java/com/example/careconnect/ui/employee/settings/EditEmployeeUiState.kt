@@ -1,5 +1,6 @@
 package com.example.careconnect.ui.employee.settings
 
+// Eingaben im Profil-Editor der Mitarbeiter
 data class EditEmployeeUiState(
     val firstName: String = "",
     val lastName: String = "",
