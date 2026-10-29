@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 
+// Beispielaufträge für die Previews
 class OrderRepositoryMock : OrderRepository {
 
     private val orders = MutableStateFlow(MockData.orders)
