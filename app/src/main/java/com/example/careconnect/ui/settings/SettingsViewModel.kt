@@ -13,8 +13,7 @@ import com.example.careconnect.domain.repository.OrganizationRepository
 import com.example.careconnect.domain.repository.PatientRepository
 import com.example.careconnect.domain.repository.SettingsRepository
 import com.example.careconnect.domain.repository.UserRepository
-import com.example.careconnect.i18n.AppLanguage
-import com.example.careconnect.platform.deviceLanguage
+import com.example.careconnect.domain.model.AppLanguage
 import com.example.careconnect.service.TrackingManager
 import com.example.careconnect.session.OrgSession
 import com.example.careconnect.util.ResourceHelper
@@ -30,6 +29,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 // Wird von beiden Rollen genutzt (Dunkelmodus, Profil-Kopf, Organisation, Abmelden)
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -99,7 +99,7 @@ class SettingsViewModel(
 
     // Gewählte App-Sprache, sonst die vom Handy
     private val _language = MutableStateFlow(
-        AppLanguage.fromCode(AppCompatDelegate.getApplicationLocales()[0]?.language ?: deviceLanguage())
+        AppLanguage.fromCode(AppCompatDelegate.getApplicationLocales()[0]?.language ?: Locale.getDefault().language)
     )
     val language = _language.asStateFlow()
 
