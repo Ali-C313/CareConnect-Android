@@ -1,4 +1,4 @@
-package com.example.careconnect.i18n
+package com.example.careconnect.domain.model
 
 // Sprachen, die man in den Einstellungen wählen kann
 enum class AppLanguage(
