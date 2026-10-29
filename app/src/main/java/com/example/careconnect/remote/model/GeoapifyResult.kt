@@ -3,6 +3,7 @@ package com.example.careconnect.remote.model
 import com.example.careconnect.domain.model.AddressSuggestion
 import com.example.careconnect.domain.model.Coordinate
 
+// Ein Treffer aus der Geoapify-Suche
 data class GeoapifyResult(
     val formatted: String = "",
     val lat: Double? = null,
