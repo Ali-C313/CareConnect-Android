@@ -79,7 +79,7 @@ In der Pflege laufen viele Absprachen noch über Telefon, Zettel und Faxgeräte.
 - **Strecke als Linie** und **Ankunftszeit**
 - Geteilt wird nur während eines laufenden Auftrags
 - Nur mit **Zustimmung von beiden Seiten**
-- OpenStreetMap-Karte, Routing über OSRM – **kein API-Key nötig**
+- MapLibre-Karte mit OpenFreeMap, Routing über OSRM – **kein API-Key nötig**
 
 </td>
 <td width="50%" valign="top">
@@ -141,8 +141,9 @@ In der Pflege laufen viele Absprachen noch über Telefon, Zettel und Faxgeräte.
 | **Texte & Sprachen** | `strings.xml` in 5 Sprachen, App-Sprache über `AppCompatDelegate` |
 | **Netzwerk** | Retrofit + Moshi + OkHttp-Logging (Routing über OSRM, optional Geoapify) |
 | **Bilder & Dateien** | Coil, Photo Picker, Activity Result API |
-| **Karte** | osmdroid (OpenStreetMap-Daten) |
-| **Standort** | FusedLocationProvider |
+| **Karte** | MapLibre Compose (OpenFreeMap / OpenStreetMap-Daten) |
+| **Standort** | FusedLocationProvider, Laufzeit-Berechtigungen mit Erklär-Dialog |
+| **Tests** | JUnit 4, kotlinx-coroutines-test, Mock-Repositories |
 
 ---
 
@@ -226,20 +227,28 @@ app/src/main/java/com/example/careconnect
 │   └── repository/     Repository-Interfaces
 ├── remote/
 │   ├── api/            Retrofit (Geoapify, OSRM)
-│   ├── FirestoreListener.kt  SnapshotListener als Flow
 │   ├── model/          DTOs mit Mappern
 │   └── repository/     Firestore-Implementierungen
 ├── local/              DataStore (Einstellungen)
-├── mock/               Beispieldaten und Repository-Mocks für die Previews
-├── service/            Standort-Tracking und Benachrichtigungen
+├── device/             Standort, Geocoder und Benachrichtigungen vom Handy
+├── service/            Standort-Tracking und Beobachtung neuer Aufträge
 ├── session/            Aktuelle Organisation
-├── platform/           Karte, Geocoder, Standort, Benachrichtigungen
-├── i18n/               Auswählbare App-Sprachen
-├── ui/                 Screens, Komponenten und ViewModels pro Feature
-├── util/               Helferklassen (Datum, Texte, Dateien, Links)
-└── MainActivity.kt     Einstieg, Berechtigungen
+├── mock/               Beispieldaten und Mocks für die Previews
+├── ui/
+│   ├── auth/           Login und Registrierung
+│   ├── organization/   Organisation beitreten oder gründen
+│   ├── employee/       Mitarbeiter-App (Home, Aufträge, Verordnungen, Patienten …)
+│   ├── patient/        Patienten-App (Home, Aufträge, Medikamente, Termine …)
+│   ├── settings/       Gemeinsame Einstellungen
+│   ├── components/     Wiederverwendbare Composables (Karte, Dialoge, Textfelder, Unterschrift …)
+│   └── theme/          Farben und Theme
+├── util/               Helferklassen (Datum, Texte, Dateien, Links, Maps, Berechtigungen)
+├── App.kt              Compose-Einstieg mit Theme
+├── AuthWrapper.kt      Weiche zwischen Login, Organisation und App
+└── MainActivity.kt     Einstieg der App
 
 app/src/main/res/values*/strings.xml   Texte auf Deutsch, Englisch, Türkisch, Arabisch, Spanisch
+app/src/test/                         Unit-Tests für Helfer, Modelle und ViewModels
 ```
 
 </details>
@@ -262,6 +271,11 @@ app/src/main/res/values*/strings.xml   Texte auf Deutsch, Englisch, Türkisch, A
 ```
 oder in Android Studio die Run-Konfiguration `app` starten.
 
+**Tests**
+```bash
+./gradlew :app:testDebugUnitTest
+```
+
 <details>
 <summary><b>⚙️ Optional</b></summary>
 
@@ -277,7 +291,7 @@ oder in Android Studio die Run-Konfiguration `app` starten.
 ## 🔭 Ausblick
 
 - [ ] Push-Benachrichtigungen mit Firebase Cloud Messaging, auch wenn die App geschlossen ist
-- [ ] Unit- und UI-Tests für ViewModels und wichtige Screens
+- [ ] Mehr Unit-Tests und UI-Tests für wichtige Screens
 - [ ] Export des Leistungsnachweises als PDF
 - [ ] Veröffentlichung im Google Play Store
 
