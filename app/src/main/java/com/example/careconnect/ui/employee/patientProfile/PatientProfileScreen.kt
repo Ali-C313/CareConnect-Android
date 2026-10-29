@@ -35,7 +35,7 @@ import com.example.careconnect.mock.repository.AppointmentRepositoryMock
 import com.example.careconnect.mock.repository.GeoRepositoryMock
 import com.example.careconnect.mock.repository.MedicineRepositoryMock
 import com.example.careconnect.mock.repository.PatientRepositoryMock
-import com.example.careconnect.platform.mapsSearchUrl
+import com.example.careconnect.util.MapsHelper.mapsSearchUrl
 import com.example.careconnect.ui.components.CareMap
 import com.example.careconnect.ui.components.CareTopBar
 import com.example.careconnect.ui.components.LoadingView
