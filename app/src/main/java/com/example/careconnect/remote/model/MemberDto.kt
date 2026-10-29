@@ -12,6 +12,7 @@ data class MemberDto(
     val inviteCode: String? = null,
     val joinedAt: Timestamp? = null
 )
+
 fun MemberDto.toMember(uid: String): Member = Member(
     uid = uid,
     firstName = firstName ?: "",
