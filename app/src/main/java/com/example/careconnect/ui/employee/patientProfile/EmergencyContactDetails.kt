@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import com.example.careconnect.R
 import com.example.careconnect.domain.model.EmergencyContact
 import com.example.careconnect.mock.MockData
-import com.example.careconnect.platform.mapsSearchUrl
+import com.example.careconnect.util.MapsHelper.mapsSearchUrl
 import com.example.careconnect.ui.components.InfoButtonRow
 import com.example.careconnect.ui.components.InfoRow
 import com.example.careconnect.ui.components.SectionCard
