@@ -15,6 +15,7 @@ import com.example.careconnect.domain.model.OrderState
 import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.ui.theme.color
 
+/** Farbiger Chip für den Auftragsstatus */
 @Composable
 fun StatusChip(state: OrderState) {
     val color: Color = state.color
