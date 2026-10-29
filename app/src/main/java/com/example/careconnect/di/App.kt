@@ -5,6 +5,7 @@ import com.example.careconnect.util.ResourceHelper
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
+// Startet beim App-Start Koin und den ResourceHelper
 class App : Application() {
 
     override fun onCreate() {
