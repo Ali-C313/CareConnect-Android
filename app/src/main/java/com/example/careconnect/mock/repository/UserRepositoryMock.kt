@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 
+// Beispielprofil für die Previews
 class UserRepositoryMock : UserRepository {
 
     private val profiles = MutableStateFlow(listOf(MockData.profile))
