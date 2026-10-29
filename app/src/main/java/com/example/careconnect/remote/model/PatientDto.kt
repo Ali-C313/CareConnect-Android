@@ -27,6 +27,7 @@ data class PatientDto(
     val linkedOrgIds: List<String>? = null,
     val linkedOrgs: List<LinkedOrgDto>? = null
 )
+
 fun PatientDto.toPatient(id: String): Patient = Patient(
     id = id,
     firstName = firstName ?: "",

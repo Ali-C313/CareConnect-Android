@@ -10,6 +10,7 @@ data class DirectoryDto(
     val type: String? = null,
     val address: String? = null
 )
+
 fun DirectoryDto.toOrganization(id: String): Organization = Organization(
     id = id,
     name = name ?: "",

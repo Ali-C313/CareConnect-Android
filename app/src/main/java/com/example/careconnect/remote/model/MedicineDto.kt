@@ -9,12 +9,14 @@ data class MedicineDto(
     val dosage: String? = null,
     val timeOfDay: String? = null
 )
+
 fun MedicineDto.toMedicineEntry(docId: String): MedicineEntry = MedicineEntry(
     id = docId,
     name = name ?: "",
     dosage = dosage ?: "",
     timeOfDay = TimeOfDay.fromValue(timeOfDay)
 )
+
 fun MedicineEntry.toDto(): MedicineDto = MedicineDto(
     name = name,
     dosage = dosage,

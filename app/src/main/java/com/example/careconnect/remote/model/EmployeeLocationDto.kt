@@ -9,6 +9,7 @@ data class EmployeeLocationDto(
     val lon: Double? = null,
     val updatedAt: Timestamp? = null
 )
+
 fun EmployeeLocationDto.toCoordinate(): Coordinate? {
     val latitude = lat ?: return null
     val longitude = lon ?: return null
