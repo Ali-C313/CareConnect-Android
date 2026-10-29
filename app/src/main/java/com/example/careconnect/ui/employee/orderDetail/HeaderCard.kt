@@ -19,6 +19,7 @@ import com.example.careconnect.ui.theme.color
 import com.example.careconnect.util.DateHelper.toAge
 import com.example.careconnect.util.DateHelper.toDateString
 
+/** Kopf mit Patient und Auftrag */
 @Composable
 fun HeaderCard(
     order: Order,
