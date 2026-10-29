@@ -4,6 +4,7 @@ import com.example.careconnect.domain.model.Organization
 import com.example.careconnect.domain.model.OrganizationType
 import com.google.firebase.Timestamp
 
+// organizations/{id}
 data class OrganizationDto(
     val name: String? = null,
     val type: String? = null,
