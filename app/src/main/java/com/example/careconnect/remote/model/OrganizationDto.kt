@@ -12,6 +12,7 @@ data class OrganizationDto(
     val ownerId: String? = null,
     val createdAt: Timestamp? = null
 )
+
 fun OrganizationDto.toOrganization(id: String): Organization = Organization(
     id = id,
     name = name ?: "",
