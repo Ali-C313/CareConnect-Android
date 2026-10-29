@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
+// Medikamente des eingeloggten Patienten
 class MedicineViewModel(
     private val medicineRepo: MedicineRepository,
     authRepo: AuthRepository
