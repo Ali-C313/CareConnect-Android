@@ -133,6 +133,10 @@
     <string name="faellig_am">Due on</string>
     <string name="faellig_datum">Due: %1$s</string>
     <string name="fehler">Error</string>
+    <string name="ok">OK</string>
+    <string name="berechtigung_erforderlich">Permission required</string>
+    <string name="standort_berechtigung_erklaerung">CareConnect needs your location so the patient can see where you are during the visit.</string>
+    <string name="benachrichtigung_berechtigung_erklaerung">With notifications you hear about new orders and status changes right away.</string>
     <string name="fehler_bei_registrierung">Sign-up error: %1$s</string>
     <string name="fehler_beim_abschliessen">Error completing</string>
     <string name="fehler_beim_aendern_des_passworts">Error changing password: %1$s</string>

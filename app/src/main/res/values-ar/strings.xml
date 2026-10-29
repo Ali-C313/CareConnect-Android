@@ -133,6 +133,10 @@
     <string name="faellig_am">تاريخ الاستحقاق</string>
     <string name="faellig_datum">الاستحقاق: %1$s</string>
     <string name="fehler">خطأ</string>
+    <string name="ok">حسناً</string>
+    <string name="berechtigung_erforderlich">الإذن مطلوب</string>
+    <string name="standort_berechtigung_erklaerung">يحتاج CareConnect إلى موقعك حتى يرى المريض مكانك أثناء الزيارة.</string>
+    <string name="benachrichtigung_berechtigung_erklaerung">مع الإشعارات تعرف فوراً بالطلبات الجديدة وتغييرات الحالة.</string>
     <string name="fehler_bei_registrierung">خطأ في التسجيل: %1$s</string>
     <string name="fehler_beim_abschliessen">خطأ في الإنهاء</string>
     <string name="fehler_beim_aendern_des_passworts">خطأ في تغيير كلمة المرور: %1$s</string>

@@ -134,6 +134,10 @@
     <string name="faellig_am">Fällig am</string>
     <string name="faellig_datum">Fällig: %1$s</string>
     <string name="fehler">Fehler</string>
+    <string name="ok">OK</string>
+    <string name="berechtigung_erforderlich">Berechtigung erforderlich</string>
+    <string name="standort_berechtigung_erklaerung">CareConnect braucht deinen Standort, damit der Patient während des Einsatzes sieht, wo du gerade bist.</string>
+    <string name="benachrichtigung_berechtigung_erklaerung">Mit Benachrichtigungen erfährst du sofort von neuen Aufträgen und Statusänderungen.</string>
     <string name="fehler_bei_registrierung">Fehler bei der Registrierung: %1$s</string>
     <string name="fehler_beim_abschliessen">Fehler beim Abschließen</string>
     <string name="fehler_beim_aendern_des_passworts">Fehler beim Ändern des Passworts: %1$s</string>

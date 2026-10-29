@@ -133,6 +133,10 @@
     <string name="faellig_am">Son tarih</string>
     <string name="faellig_datum">Son tarih: %1$s</string>
     <string name="fehler">Hata</string>
+    <string name="ok">Tamam</string>
+    <string name="berechtigung_erforderlich">İzin gerekli</string>
+    <string name="standort_berechtigung_erklaerung">CareConnect, ziyaret sırasında hastanın nerede olduğunu görebilmesi için konumuna ihtiyaç duyar.</string>
+    <string name="benachrichtigung_berechtigung_erklaerung">Bildirimler sayesinde yeni görevlerden ve durum değişikliklerinden hemen haberdar olursun.</string>
     <string name="fehler_bei_registrierung">Kayıt hatası: %1$s</string>
     <string name="fehler_beim_abschliessen">Tamamlanırken hata</string>
     <string name="fehler_beim_aendern_des_passworts">Şifre değiştirilirken hata: %1$s</string>

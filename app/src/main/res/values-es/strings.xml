@@ -133,6 +133,10 @@
     <string name="faellig_am">Vence el</string>
     <string name="faellig_datum">Vence: %1$s</string>
     <string name="fehler">Error</string>
+    <string name="ok">Aceptar</string>
+    <string name="berechtigung_erforderlich">Permiso necesario</string>
+    <string name="standort_berechtigung_erklaerung">CareConnect necesita tu ubicación para que el paciente vea dónde estás durante la visita.</string>
+    <string name="benachrichtigung_berechtigung_erklaerung">Con las notificaciones te enteras al instante de nuevos encargos y cambios de estado.</string>
     <string name="fehler_bei_registrierung">Error en el registro: %1$s</string>
     <string name="fehler_beim_abschliessen">Error al completar</string>
     <string name="fehler_beim_aendern_des_passworts">Error al cambiar la contraseña: %1$s</string>
