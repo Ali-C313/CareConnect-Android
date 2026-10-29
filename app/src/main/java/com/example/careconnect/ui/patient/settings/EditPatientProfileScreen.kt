@@ -155,7 +155,7 @@ fun EditPatientProfileScreen(
             onDismissRequest = viewModel::dismissMessage,
             title = { Text(stringResource(R.string.hinweis)) },
             text = { Text(message) },
-            confirmButton = { TextButton(onClick = viewModel::dismissMessage) { Text("OK") } }
+            confirmButton = { TextButton(onClick = viewModel::dismissMessage) { Text(stringResource(R.string.ok)) } }
         )
     }
 }
