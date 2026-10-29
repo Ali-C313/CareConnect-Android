@@ -11,6 +11,7 @@ data class EmergencyContactDto(
     val address: String? = null,
     val age: Int? = null
 )
+
 fun EmergencyContactDto.toEmergencyContact(): EmergencyContact = EmergencyContact(
     name = name ?: "",
     relation = relation ?: "",
@@ -19,6 +20,7 @@ fun EmergencyContactDto.toEmergencyContact(): EmergencyContact = EmergencyContac
     address = address ?: "",
     age = age
 )
+
 fun EmergencyContact.toDto(): EmergencyContactDto = EmergencyContactDto(
     name = name,
     relation = relation,
