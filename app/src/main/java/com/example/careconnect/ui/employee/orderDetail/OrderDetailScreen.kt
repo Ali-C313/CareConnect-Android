@@ -38,6 +38,7 @@ import com.example.careconnect.mock.repository.OrderRepositoryMock
 import com.example.careconnect.mock.repository.PatientRepositoryMock
 import com.example.careconnect.ui.components.CareTopBar
 import com.example.careconnect.ui.components.EmptyStateView
+import com.example.careconnect.ui.components.ErrorDialog
 import com.example.careconnect.ui.components.LoadingView
 import com.example.careconnect.ui.employee.orders.NewOrderSheet
 import com.example.careconnect.ui.theme.CareConnectTheme
@@ -157,16 +158,7 @@ fun OrderDetailScreen(
         )
     }
 
-    errorMessage?.let { message ->
-        AlertDialog(
-            onDismissRequest = viewModel::dismissError,
-            title = { Text(stringResource(R.string.fehler)) },
-            text = { Text(message) },
-            confirmButton = {
-                TextButton(onClick = viewModel::dismissError) { Text("OK") }
-            }
-        )
-    }
+    ErrorDialog(message = errorMessage, onDismiss = viewModel::dismissError)
 
     if (showEditSheet) {
         NewOrderSheet(
