@@ -19,6 +19,7 @@ import com.example.careconnect.domain.model.JoinRequest
 import com.example.careconnect.mock.MockData
 import com.example.careconnect.ui.theme.CareConnectTheme
 
+/** Eine Beitrittsanfrage mit Annehmen und Ablehnen */
 @Composable
 fun RequestRow(
     request: JoinRequest,
