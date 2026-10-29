@@ -33,7 +33,6 @@ class AuthRepositoryImpl(
 
     override suspend fun login(email: String, password: String): Result<Unit> = runCatching {
         auth.signInWithEmailAndPassword(email.trim(), password).await()
-        Unit
     }
 
     override suspend fun register(email: String, password: String): Result<String> = runCatching {
@@ -53,6 +52,5 @@ class AuthRepositoryImpl(
             user.reauthenticate(credential).await()
         }
         user.updatePassword(newPassword).await()
-        Unit
     }
 }
