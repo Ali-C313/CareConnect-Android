@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 
+// Beispielorganisation für die Previews
 class OrganizationRepositoryMock : OrganizationRepository {
 
     private val organizations = MutableStateFlow(listOf(MockData.organization, MockData.practice))
