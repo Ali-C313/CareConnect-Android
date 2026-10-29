@@ -17,6 +17,7 @@ import com.example.careconnect.ui.theme.StatusBlue
 import com.example.careconnect.ui.theme.color
 import com.example.careconnect.ui.theme.icon
 
+/** Großer Button in der Aktionskarte */
 @Composable
 fun ActionButton(
     title: String,
