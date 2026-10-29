@@ -1,4 +1,4 @@
-package com.example.careconnect.platform
+package com.example.careconnect.device
 
 import android.content.Context
 import android.location.Address
@@ -11,9 +11,10 @@ import kotlinx.coroutines.withContext
 import java.util.Locale
 import kotlin.coroutines.resume
 
+// Adresse in Koordinate umwandeln mit dem Geocoder vom Handy
 class AndroidGeocoder(
     private val context: Context
-) : PlatformGeocoder {
+) : AddressGeocoder {
 
     override suspend fun geocode(address: String): Coordinate? {
         if (address.isBlank() || !Geocoder.isPresent()) return null
