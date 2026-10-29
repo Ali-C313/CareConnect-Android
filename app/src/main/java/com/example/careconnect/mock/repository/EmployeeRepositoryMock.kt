@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 
+// Beispielmitarbeiter für die Previews
 class EmployeeRepositoryMock : EmployeeRepository {
 
     private val employees = MutableStateFlow(MockData.employees)
