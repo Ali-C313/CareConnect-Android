@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
+// Beispielverordnungen für die Previews
 class PrescriptionRepositoryMock : PrescriptionRepository {
 
     private val prescriptions = MutableStateFlow(MockData.prescriptions)
