@@ -2,11 +2,13 @@ package com.example.careconnect.ui.patient.appointments
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.careconnect.R
 import com.example.careconnect.domain.model.AddressSuggestion
 import com.example.careconnect.domain.model.Appointment
 import com.example.careconnect.domain.repository.AppointmentRepository
 import com.example.careconnect.domain.repository.AuthRepository
 import com.example.careconnect.domain.repository.GeoRepository
+import com.example.careconnect.util.ResourceHelper
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -34,6 +36,9 @@ class AppointmentsViewModel(
     val form = _form.asStateFlow()
 
     private var searchJob: Job? = null
+
+    private val _errorMessage = MutableStateFlow<String?>(null)
+    val errorMessage = _errorMessage.asStateFlow()
 
     /** @param appointment null = neuer Termin */
     fun startEditing(appointment: Appointment?) {
@@ -91,11 +96,12 @@ class AppointmentsViewModel(
             notes = state.notes.trim()
         )
         viewModelScope.launch {
-            if (state.editingId != null) {
+            val result = if (state.editingId != null) {
                 appointmentRepo.updateAppointment(id, appointment)
             } else {
                 appointmentRepo.addAppointment(id, appointment)
             }
+            result.onFailure { e -> _errorMessage.update { ResourceHelper.getString(R.string.fehler_beim_speichern, e.message.orEmpty()) } }
         }
     }
 
@@ -103,6 +109,11 @@ class AppointmentsViewModel(
         val id = patientId ?: return
         viewModelScope.launch {
             appointmentRepo.deleteAppointment(id, appointment.id)
+                .onFailure { e -> _errorMessage.update { ResourceHelper.getString(R.string.loeschen_fehlgeschlagen, e.message.orEmpty()) } }
         }
+    }
+
+    fun dismissError() {
+        _errorMessage.update { null }
     }
 }
