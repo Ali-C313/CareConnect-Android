@@ -12,6 +12,7 @@ data class CompletionReportDto(
     val completedBy: String? = null,
     val completedByName: String? = null
 )
+
 fun CompletionReportDto.toReport(): CompletionReport = CompletionReport(
     note = note ?: "",
     signature = signature ?: "",
@@ -20,6 +21,7 @@ fun CompletionReportDto.toReport(): CompletionReport = CompletionReport(
     completedBy = completedBy ?: "",
     completedByName = completedByName ?: ""
 )
+
 fun CompletionReport.toDto(): CompletionReportDto = CompletionReportDto(
     note = note,
     signature = signature,
