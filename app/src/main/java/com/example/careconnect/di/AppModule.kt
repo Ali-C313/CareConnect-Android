@@ -15,12 +15,12 @@ import com.example.careconnect.domain.repository.StorageRepository
 import com.example.careconnect.domain.repository.UserRepository
 import com.example.careconnect.local.SettingsRepositoryImpl
 import com.example.careconnect.local.dataStore
-import com.example.careconnect.platform.AndroidGeocoder
-import com.example.careconnect.platform.AndroidLocationTracker
-import com.example.careconnect.platform.AndroidNotifier
-import com.example.careconnect.platform.LocationTracker
-import com.example.careconnect.platform.Notifier
-import com.example.careconnect.platform.PlatformGeocoder
+import com.example.careconnect.device.AndroidGeocoder
+import com.example.careconnect.device.AndroidLocationTracker
+import com.example.careconnect.device.AndroidNotifier
+import com.example.careconnect.device.LocationTracker
+import com.example.careconnect.device.Notifier
+import com.example.careconnect.device.AddressGeocoder
 import com.example.careconnect.remote.api.GeoapifyApi
 import com.example.careconnect.remote.api.OsrmApi
 import com.example.careconnect.remote.repository.AppointmentRepositoryImpl
@@ -82,7 +82,7 @@ val appModule = module {
     // DataStore und Geräte-Funktionen
     single { androidContext().dataStore }
     single<LocationTracker> { AndroidLocationTracker(androidContext()) }
-    single<PlatformGeocoder> { AndroidGeocoder(androidContext()) }
+    single<AddressGeocoder> { AndroidGeocoder(androidContext()) }
     single<Notifier> { AndroidNotifier(androidContext()) }
 
     // Aktuelle Organisation
