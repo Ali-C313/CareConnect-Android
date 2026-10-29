@@ -28,6 +28,7 @@ import com.example.careconnect.util.DateHelper.toDateString
 import com.example.careconnect.util.ResourceHelper
 import com.example.careconnect.util.StringHelper
 
+/** Kopf mit Bild, Name, Rolle und Status */
 @Composable
 fun ProfileHeader(employee: Employee) {
     SectionCard {
