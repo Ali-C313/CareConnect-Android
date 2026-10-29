@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careconnect.ui.theme.CareConnectTheme
 
+/** Zeile mit Text und Schalter */
 @Composable
 fun SwitchRow(
     icon: ImageVector,
