@@ -40,6 +40,12 @@ class AuthViewModel(
     private val notificationWatcher: NotificationWatcher
 ) : ViewModel() {
 
+    // Für die Standort-Abfrage, sobald ein Einsatz läuft
+    val isTracking: StateFlow<Boolean> = trackingManager.isTracking
+
+    // Nach erteilter Standort-Berechtigung neu starten
+    fun restartTracking() = trackingManager.restart()
+
     val authState: StateFlow<AuthState> = authRepo.authState
         .flatMapLatest { uid ->
             if (uid == null) flowOf<AuthState>(AuthState.LoggedOut)
