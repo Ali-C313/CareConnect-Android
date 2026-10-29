@@ -19,6 +19,7 @@ import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.ui.theme.StatusOrange
 import com.example.careconnect.ui.theme.icon
 
+/** Kleine Karte mit Icon, Titel und Text */
 @Composable
 fun SmallSection(
     icon: ImageVector,
