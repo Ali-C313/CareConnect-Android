@@ -22,13 +22,14 @@ import androidx.compose.ui.unit.dp
 import com.example.careconnect.R
 import com.example.careconnect.domain.model.Appointment
 import com.example.careconnect.mock.MockData
-import com.example.careconnect.platform.mapsSearchUrl
+import com.example.careconnect.util.MapsHelper.mapsSearchUrl
 import com.example.careconnect.ui.components.InfoButtonRow
 import com.example.careconnect.ui.components.InfoRow
 import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.util.DateHelper.toDateTimeString
 import com.example.careconnect.util.UriHelper.openSafely
 
+/** Details zu einem Termin */
 @Composable
 fun AppointmentDetails(appointment: Appointment) {
     val uriHandler = LocalUriHandler.current
