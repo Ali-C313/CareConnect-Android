@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.await
 
+// Live-Standort der Mitarbeiter unter employeeLocations
 class LocationRepositoryImpl(
     private val db: FirebaseFirestore,
     private val session: OrgSession
