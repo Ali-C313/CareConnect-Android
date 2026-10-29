@@ -7,6 +7,7 @@ import com.example.careconnect.domain.repository.SettingsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+// Einstellungen im DataStore speichern und lesen
 class SettingsRepositoryImpl(
     private val dataStore: DataStore<Preferences>
 ) : SettingsRepository {
