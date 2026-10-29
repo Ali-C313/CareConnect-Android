@@ -28,6 +28,7 @@ import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.ui.theme.StatusRed
 import com.example.careconnect.util.DateHelper.toDateString
 
+/** Karte für eine Verordnung mit Aktionen */
 @Composable
 fun PrescriptionCard(
     prescription: Prescription,
