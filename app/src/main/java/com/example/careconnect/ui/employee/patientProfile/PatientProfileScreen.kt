@@ -35,12 +35,13 @@ import com.example.careconnect.mock.repository.AppointmentRepositoryMock
 import com.example.careconnect.mock.repository.GeoRepositoryMock
 import com.example.careconnect.mock.repository.MedicineRepositoryMock
 import com.example.careconnect.mock.repository.PatientRepositoryMock
-import com.example.careconnect.util.MapsHelper.mapsSearchUrl
 import com.example.careconnect.ui.components.CareMap
 import com.example.careconnect.ui.components.CareTopBar
+import com.example.careconnect.ui.components.ErrorDialog
 import com.example.careconnect.ui.components.LoadingView
 import com.example.careconnect.ui.components.SectionCard
 import com.example.careconnect.ui.theme.CareConnectTheme
+import com.example.careconnect.util.MapsHelper.mapsSearchUrl
 import com.example.careconnect.util.UriHelper.openSafely
 import org.koin.androidx.compose.koinViewModel
 
@@ -55,6 +56,7 @@ fun PatientProfileScreen(
     val uriHandler = LocalUriHandler.current
     val medicines by viewModel.medicines.collectAsState()
     val appointments by viewModel.appointments.collectAsState()
+    val errorMessage by viewModel.errorMessage.collectAsState()
     var showContactSheet by remember { mutableStateOf(false) }
     var showContactEditor by remember { mutableStateOf(false) }
 
@@ -133,6 +135,8 @@ fun PatientProfileScreen(
             )
         }
     }
+
+    ErrorDialog(message = errorMessage, onDismiss = viewModel::dismissError)
 }
 
 @Preview
