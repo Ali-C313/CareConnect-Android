@@ -52,7 +52,6 @@ class PrescriptionRepositoryImpl(
         batch.set(prescriptionRef(prescription.fromOrgId, id), dto)
         batch.set(prescriptionRef(prescription.toOrgId, id), dto)
         batch.commit().await()
-        Unit
     }
 
     // Pflegedienst ändert den Status in beiden Kopien
@@ -72,7 +71,6 @@ class PrescriptionRepositoryImpl(
             )
         }
         batch.commit().await()
-        Unit
     }
 
     override suspend fun withdraw(prescription: Prescription): Result<Unit> = runCatching {
@@ -80,7 +78,6 @@ class PrescriptionRepositoryImpl(
         batch.delete(prescriptionRef(prescription.fromOrgId, prescription.id))
         batch.delete(prescriptionRef(prescription.toOrgId, prescription.id))
         batch.commit().await()
-        Unit
     }
 
     override fun observeLinkedOrgs(orgId: String, patientId: String): Flow<List<LinkedOrg>> =
@@ -98,6 +95,5 @@ class PrescriptionRepositoryImpl(
             linkedOrgs = links.map { LinkedOrgDto(it.orgId, it.orgName) }
         )
         patientRef(orgId, patientId).set(dto, SetOptions.merge()).await()
-        Unit
     }
 }
