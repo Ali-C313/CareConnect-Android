@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.careconnect.ui.components.CareTextField
 import com.example.careconnect.ui.theme.CareConnectTheme
 
+/** Textfeld für die Registrierung */
 @Composable
 fun RegisterTextField(
     label: String,
