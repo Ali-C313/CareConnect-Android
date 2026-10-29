@@ -76,7 +76,7 @@ fun SearchScreen(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            item { SectionTitle(stringResource(R.string.mitarbeiter)) }
+            item { SearchSectionTitle(stringResource(R.string.mitarbeiter)) }
             items(results.employees, key = { "e_${it.id}" }) { employee ->
                 SectionCard(modifier = Modifier.clickable { onEmployeeClick(employee.id) }) {
                     Row(
@@ -100,7 +100,7 @@ fun SearchScreen(
                 }
             }
 
-            item { SectionTitle(stringResource(R.string.patienten)) }
+            item { SearchSectionTitle(stringResource(R.string.patienten)) }
             items(results.patients, key = { "p_${it.id}" }) { patient ->
                 ResultRow(
                     icon = Icons.Default.Person,
@@ -110,7 +110,7 @@ fun SearchScreen(
                 )
             }
 
-            item { SectionTitle(stringResource(R.string.auftraege)) }
+            item { SearchSectionTitle(stringResource(R.string.auftraege)) }
             items(results.orders, key = { "o_${it.id}" }) { order ->
                 ResultRow(
                     icon = Icons.Default.Description,
