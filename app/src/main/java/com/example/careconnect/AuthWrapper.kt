@@ -16,6 +16,7 @@ import com.example.careconnect.ui.auth.AuthNavigation
 import com.example.careconnect.ui.auth.AuthState
 import com.example.careconnect.ui.auth.AuthViewModel
 import com.example.careconnect.ui.components.LocationConsentDialog
+import com.example.careconnect.ui.components.PermissionRequests
 import com.example.careconnect.ui.employee.EmployeeApp
 import com.example.careconnect.ui.organization.OnboardingScreen
 import com.example.careconnect.ui.patient.PatientApp
@@ -28,6 +29,7 @@ fun AuthWrapper(
 ) {
     val state by authViewModel.authState.collectAsState()
     val needsLocationConsent by authViewModel.needsLocationConsent.collectAsState()
+    val isTracking by authViewModel.isTracking.collectAsState()
 
     // Surface setzt die Textfarbe passend zu Hell/Dunkel, sonst ist Text ohne Farbe schwarz
     Surface(
@@ -45,6 +47,11 @@ fun AuthWrapper(
                     key(current.membership.orgId) {
                         if (current.role == UserRole.EMPLOYEE) EmployeeApp(current.membership.orgType) else PatientApp()
                     }
+
+                    PermissionRequests(
+                        isTracking = isTracking,
+                        onLocationGranted = authViewModel::restartTracking
+                    )
 
                     if (needsLocationConsent) {
                         LocationConsentDialog(
