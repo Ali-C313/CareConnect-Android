@@ -11,6 +11,7 @@ data class EmployeeDocumentDto(
     val uploadedAt: Timestamp? = null,
     val storagePath: String? = null
 )
+
 fun EmployeeDocumentDto.toEmployeeDocument(docId: String): EmployeeDocument = EmployeeDocument(
     id = docId,
     fileName = fileName ?: "Dokument.pdf",
