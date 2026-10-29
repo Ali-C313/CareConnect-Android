@@ -2,6 +2,7 @@ package com.example.careconnect.local
 
 import androidx.datastore.preferences.core.booleanPreferencesKey
 
+// Schlüssel für die Einstellungen im DataStore
 object PreferencesKeys {
     val DARK_MODE = booleanPreferencesKey("is_dark_mode")
     val SHARE_LOCATION = booleanPreferencesKey("share_location")
