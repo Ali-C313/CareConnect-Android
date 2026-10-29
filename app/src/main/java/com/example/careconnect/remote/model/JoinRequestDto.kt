@@ -5,6 +5,7 @@ import com.example.careconnect.domain.model.JoinRequestStatus
 import com.example.careconnect.domain.model.OrganizationType
 import com.google.firebase.Timestamp
 
+// organizations/{id}/joinRequests
 data class JoinRequestDto(
     val orgId: String? = null,
     val orgName: String? = null,
