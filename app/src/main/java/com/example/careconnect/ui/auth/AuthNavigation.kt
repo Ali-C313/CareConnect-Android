@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
+/** Navigation zwischen Login und Registrierung */
 @Composable
 fun AuthNavigation(
     isLoggedInWithoutProfile: Boolean,
