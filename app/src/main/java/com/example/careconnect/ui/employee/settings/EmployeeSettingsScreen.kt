@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.careconnect.mock.platform.LocationTrackerMock
+import com.example.careconnect.mock.device.LocationTrackerMock
 import com.example.careconnect.mock.repository.AuthRepositoryMock
 import com.example.careconnect.mock.repository.EmployeeRepositoryMock
 import com.example.careconnect.mock.repository.LocationRepositoryMock
@@ -21,6 +21,7 @@ import com.example.careconnect.ui.settings.SettingsViewModel
 import com.example.careconnect.ui.theme.CareConnectTheme
 import org.koin.androidx.compose.koinViewModel
 
+/** Einstellungen der Mitarbeiter */
 @Composable
 fun EmployeeSettingsScreen(
     onEditProfileClick: () -> Unit,
