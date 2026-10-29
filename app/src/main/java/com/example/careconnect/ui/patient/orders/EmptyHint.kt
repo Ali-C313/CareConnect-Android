@@ -7,6 +7,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.ui.theme.color
 
+/** Kurzer Hinweis, wenn eine Gruppe leer ist */
 @Composable
 fun EmptyHint(text: String) {
     Text(text, color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodyMedium)
