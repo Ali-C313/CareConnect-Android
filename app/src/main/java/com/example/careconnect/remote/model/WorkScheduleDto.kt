@@ -9,6 +9,7 @@ data class WorkScheduleDto(
     val shiftEnd: String? = null,
     val workDays: List<String>? = null
 )
+
 fun WorkScheduleDto?.toWorkSchedule(): WorkSchedule {
     val default = WorkSchedule()
     if (this == null) return default
