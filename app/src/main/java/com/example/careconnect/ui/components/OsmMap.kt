@@ -1,4 +1,4 @@
-package com.example.careconnect.platform
+package com.example.careconnect.ui.components
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -71,7 +71,7 @@ private class MapState {
 
 // OpenStreetMap-Karte, route wird als Linie eingezeichnet
 @Composable
-fun PlatformMap(
+fun OsmMap(
     markers: List<MapMarker>,
     modifier: Modifier = Modifier,
     route: List<Coordinate> = emptyList()
