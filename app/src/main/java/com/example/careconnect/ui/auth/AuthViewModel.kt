@@ -1,5 +1,6 @@
 package com.example.careconnect.ui.auth
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.careconnect.domain.model.JoinRequest
@@ -140,7 +141,7 @@ class AuthViewModel(
                     } catch (e: CancellationException) {
                         throw e
                     } catch (e: Exception) {
-                        println("Benachrichtigungen: ${e.message}")
+                        Log.e("AuthViewModel", "Benachrichtigungen: ${e.message}")
                     }
                 }
         }
