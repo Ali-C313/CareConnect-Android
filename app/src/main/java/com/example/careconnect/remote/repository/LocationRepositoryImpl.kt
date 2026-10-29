@@ -41,11 +41,9 @@ class LocationRepositoryImpl(
             updatedAt = Timestamp.now()
         )
         locationsRef().document(employeeId).set(dto).await()
-        Unit
     }
 
     override suspend fun clearLocation(employeeId: String): Result<Unit> = runCatching {
         locationsRef().document(employeeId).delete().await()
-        Unit
     }
 }
