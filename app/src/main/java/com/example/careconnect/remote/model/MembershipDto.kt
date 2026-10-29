@@ -5,6 +5,7 @@ import com.example.careconnect.domain.model.Membership
 import com.example.careconnect.domain.model.OrganizationType
 import com.google.firebase.Timestamp
 
+// users/{uid}/memberships
 data class MembershipDto(
     val orgName: String? = null,
     val orgType: String? = null,
