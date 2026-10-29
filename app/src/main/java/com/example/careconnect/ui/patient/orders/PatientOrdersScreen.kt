@@ -68,7 +68,7 @@ fun PatientOrdersScreen(
                     }
                 }
 
-                item { SectionTitle(stringResource(R.string.offen), openOrders.size) }
+                item { OrderSectionTitle(stringResource(R.string.offen), openOrders.size) }
                 if (openOrders.isEmpty()) {
                     item { EmptyHint(stringResource(R.string.keine_offenen_auftraege)) }
                 } else {
@@ -77,7 +77,7 @@ fun PatientOrdersScreen(
                     }
                 }
 
-                item { SectionTitle(stringResource(R.string.erledigt), doneOrders.size) }
+                item { OrderSectionTitle(stringResource(R.string.erledigt), doneOrders.size) }
                 if (doneOrders.isEmpty()) {
                     item { EmptyHint(stringResource(R.string.keine_erledigten_auftraege)) }
                 } else {
