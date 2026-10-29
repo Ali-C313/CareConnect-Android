@@ -21,6 +21,5 @@ class StorageRepositoryImpl(
 
     override suspend fun deleteFile(path: String): Result<Unit> = runCatching {
         storage.reference.child(path).delete().await()
-        Unit
     }
 }
