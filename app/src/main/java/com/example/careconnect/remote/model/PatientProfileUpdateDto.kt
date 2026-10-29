@@ -1,5 +1,6 @@
 package com.example.careconnect.remote.model
 
+// Nur für Updates mit SetOptions.merge()
 data class PatientProfileUpdateDto(
     val firstName: String,
     val lastName: String,
