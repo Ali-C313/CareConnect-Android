@@ -14,6 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.careconnect.ui.theme.CareConnectTheme
+import com.example.careconnect.util.SignatureHelper.decodeSignature
+import com.example.careconnect.util.SignatureHelper.drawSignatureStroke
 
 /**
  * Zeigt eine gespeicherte Unterschrift an.
