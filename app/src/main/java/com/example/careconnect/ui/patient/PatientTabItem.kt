@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.example.careconnect.R
 import com.example.careconnect.util.ResourceHelper
 
+// Tabs der Patienten-App
 enum class PatientTabItem(
     val route: PatientRoute,
     val icon: ImageVector
