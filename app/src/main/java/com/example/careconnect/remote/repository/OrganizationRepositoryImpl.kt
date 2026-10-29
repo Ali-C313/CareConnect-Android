@@ -1,5 +1,6 @@
 package com.example.careconnect.remote.repository
 
+import android.util.Log
 import com.example.careconnect.domain.model.Invite
 import com.example.careconnect.domain.model.JoinRequest
 import com.example.careconnect.domain.model.JoinRequestStatus
@@ -114,7 +115,7 @@ class OrganizationRepositoryImpl(
             if (!doc.exists()) null
             else runCatching { MemberRole.fromValue(doc.getString("role")) }.getOrNull()
         }
-        .catch { println("Mitgliedschaft konnte nicht geladen werden: ${it.message}") }
+        .catch { Log.e("OrganizationRepo", "Mitgliedschaft konnte nicht geladen werden: ${it.message}") }
 
     override suspend fun leaveOrganization(uid: String, orgId: String): Result<Unit> = runCatching {
         val batch = db.batch()
