@@ -14,6 +14,7 @@ data class InviteDto(
     val createdBy: String? = null,
     val createdAt: Timestamp? = null
 )
+
 fun InviteDto.toInvite(code: String): Invite? {
     val id = orgId ?: return null
     return Invite(
