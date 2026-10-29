@@ -16,9 +16,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careconnect.R
-import com.example.careconnect.i18n.AppLanguage
+import com.example.careconnect.domain.model.AppLanguage
 import com.example.careconnect.ui.theme.CareConnectTheme
 
+/** Dialog zum Wechseln der App-Sprache */
 @Composable
 fun LanguageDialog(
     selected: AppLanguage,
