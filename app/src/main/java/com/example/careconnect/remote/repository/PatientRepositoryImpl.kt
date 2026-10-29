@@ -62,16 +62,13 @@ class PatientRepositoryImpl(
             medicalHistory = patient.medicalHistory
         )
         patientsRef().document(patient.id).set(dto, SetOptions.merge()).await()
-        Unit
     }
 
     override suspend fun updateProfileImage(id: String, url: String): Result<Unit> = runCatching {
         patientsRef().document(id).update("profileImageURL", url).await()
-        Unit
     }
 
     override suspend fun saveEmergencyContact(id: String, contact: EmergencyContact): Result<Unit> = runCatching {
         patientsRef().document(id).set(EmergencyContactUpdateDto(contact.toDto()), SetOptions.merge()).await()
-        Unit
     }
 }
