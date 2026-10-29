@@ -33,14 +33,15 @@ import com.example.careconnect.mock.repository.AuthRepositoryMock
 import com.example.careconnect.mock.repository.EmployeeRepositoryMock
 import com.example.careconnect.mock.repository.OrderRepositoryMock
 import com.example.careconnect.mock.repository.PatientRepositoryMock
-import com.example.careconnect.util.MapsHelper.tourUrl
 import com.example.careconnect.ui.components.CareTopBar
+import com.example.careconnect.ui.components.ErrorDialog
 import com.example.careconnect.ui.components.StatTile
 import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.ui.theme.StatusBlue
 import com.example.careconnect.ui.theme.StatusGreen
 import com.example.careconnect.ui.theme.StatusOrange
 import com.example.careconnect.ui.theme.color
+import com.example.careconnect.util.MapsHelper.tourUrl
 import com.example.careconnect.util.UriHelper.openSafely
 import org.koin.androidx.compose.koinViewModel
 
@@ -56,6 +57,7 @@ fun HomeScreen(
     val orders by viewModel.orders.collectAsState()
     val currentEmployee by viewModel.currentEmployee.collectAsState()
     val todayTour by viewModel.todayTour.collectAsState()
+    val errorMessage by viewModel.errorMessage.collectAsState()
     val uriHandler = LocalUriHandler.current
 
     Column(
@@ -141,6 +143,8 @@ fun HomeScreen(
             }
         }
     }
+
+    ErrorDialog(message = errorMessage, onDismiss = viewModel::dismissError)
 }
 
 @Preview
