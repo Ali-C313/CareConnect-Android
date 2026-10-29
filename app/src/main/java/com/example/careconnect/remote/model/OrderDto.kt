@@ -19,6 +19,7 @@ data class OrderDto(
     val createdAt: Timestamp? = null,
     val report: CompletionReportDto? = null
 )
+
 fun OrderDto.toOrder(docId: String): Order = Order(
     id = docId,
     state = OrderState.fromValue(state),
@@ -32,6 +33,7 @@ fun OrderDto.toOrder(docId: String): Order = Order(
     createdAt = createdAt?.toMillis(),
     report = report?.toReport()
 )
+
 fun Order.toDto(): OrderDto = OrderDto(
     id = id,
     state = state.value,
