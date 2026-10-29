@@ -35,7 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careconnect.R
 import com.example.careconnect.domain.model.OrderState
-import com.example.careconnect.mock.platform.LocationTrackerMock
+import com.example.careconnect.mock.device.LocationTrackerMock
 import com.example.careconnect.mock.repository.EmployeeRepositoryMock
 import com.example.careconnect.mock.repository.LocationRepositoryMock
 import com.example.careconnect.mock.repository.OrderRepositoryMock
