@@ -1,4 +1,4 @@
-package com.example.careconnect.platform
+package com.example.careconnect.device
 
 import com.example.careconnect.domain.model.Coordinate
 
