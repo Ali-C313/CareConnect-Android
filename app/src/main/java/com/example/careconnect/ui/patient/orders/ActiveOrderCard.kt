@@ -32,6 +32,7 @@ import com.example.careconnect.domain.model.OrderState
 import com.example.careconnect.mock.MockData
 import com.example.careconnect.ui.theme.CareConnectTheme
 
+/** Karte für den Auftrag, der gerade läuft */
 @Composable
 fun ActiveOrderCard(
     order: Order,
