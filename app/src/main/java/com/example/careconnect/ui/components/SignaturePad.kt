@@ -31,6 +31,8 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import com.example.careconnect.R
 import com.example.careconnect.ui.theme.CareConnectTheme
+import com.example.careconnect.util.SignatureHelper.drawSignatureStroke
+import com.example.careconnect.util.SignatureStrokes
 
 /**
  * Feld zum Unterschreiben mit dem Finger.
