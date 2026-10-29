@@ -105,7 +105,7 @@ fun DateTimePickerField(
                             onValueChange(combineDateAndTime(selected, 12, 0))
                         }
                     }
-                }) { Text("OK") }
+                }) { Text(stringResource(R.string.ok)) }
             },
             dismissButton = {
                 TextButton(onClick = { showDatePicker = false }) { Text(stringResource(R.string.abbrechen)) }
@@ -129,7 +129,7 @@ fun DateTimePickerField(
                     pickedDate?.let { date ->
                         onValueChange(combineDateAndTime(date, timeState.hour, timeState.minute))
                     }
-                }) { Text("OK") }
+                }) { Text(stringResource(R.string.ok)) }
             },
             dismissButton = {
                 TextButton(onClick = { showTimePicker = false }) { Text(stringResource(R.string.abbrechen)) }
