@@ -25,7 +25,6 @@ import com.example.careconnect.R
 import com.example.careconnect.domain.model.Coordinate
 import com.example.careconnect.domain.model.MapMarker
 import com.example.careconnect.mock.MockData
-import com.example.careconnect.platform.PlatformMap
 import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.util.ResourceHelper
 
@@ -70,7 +69,7 @@ fun CareMap(
                 )
             }
         } else {
-            PlatformMap(
+            OsmMap(
                 markers = markers,
                 modifier = Modifier.fillMaxSize(),
                 route = route
