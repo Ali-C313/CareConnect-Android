@@ -50,6 +50,7 @@ import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.ui.theme.StatusRed
 import org.koin.androidx.compose.koinViewModel
 
+/** Leitung verwaltet Anfragen, Codes und Mitglieder */
 @Composable
 fun ManageOrganizationScreen(
     onBack: () -> Unit,
