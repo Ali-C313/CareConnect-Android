@@ -9,6 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.careconnect.ui.theme.CareConnectTheme
 
+/** Überschrift über einer Gruppe in der Suche */
 @Composable
 fun SectionTitle(title: String) {
     Text(
