@@ -27,6 +27,7 @@ import com.example.careconnect.ui.theme.StatusBlue
 import com.example.careconnect.ui.theme.StatusRed
 import com.example.careconnect.util.DateHelper.toDateTimeString
 
+/** Ein Termin in der Liste */
 @Composable
 fun AppointmentRow(
     appointment: Appointment,
