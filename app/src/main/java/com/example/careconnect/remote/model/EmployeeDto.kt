@@ -17,6 +17,7 @@ data class EmployeeDto(
     val workSchedule: WorkScheduleDto? = null,
     val inviteCode: String? = null
 )
+
 fun EmployeeDto.toEmployee(id: String): Employee = Employee(
     id = id,
     firstName = firstName ?: "",
