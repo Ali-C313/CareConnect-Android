@@ -2,6 +2,7 @@ package com.example.careconnect.ui.employee.orders
 
 import com.example.careconnect.util.DateHelper.currentTimeMillis
 
+// Eingaben für einen neuen Auftrag
 data class NewOrderUiState(
     val existingOrderId: String? = null,
     val selectedPatientId: String = "",
