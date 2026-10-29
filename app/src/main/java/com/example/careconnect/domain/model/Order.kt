@@ -3,6 +3,7 @@ package com.example.careconnect.domain.model
 import com.example.careconnect.R
 import com.example.careconnect.util.ResourceHelper
 
+// Auftrag für einen Patienten
 data class Order(
     val id: String,
     val state: OrderState = OrderState.OFFEN,
