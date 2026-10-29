@@ -31,6 +31,7 @@ import com.example.careconnect.ui.theme.CareConnectTheme
 import com.example.careconnect.ui.theme.StatusRed
 import com.example.careconnect.ui.theme.color
 
+/** Eine Zeile in der Dokumentenliste */
 @Composable
 fun DocumentRow(
     document: EmployeeDocument,
