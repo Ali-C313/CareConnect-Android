@@ -2,6 +2,7 @@ package com.example.careconnect.ui.employee.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.careconnect.R
 import com.example.careconnect.domain.model.Employee
 import com.example.careconnect.domain.model.Order
 import com.example.careconnect.domain.model.OrderState
@@ -11,11 +12,15 @@ import com.example.careconnect.domain.repository.EmployeeRepository
 import com.example.careconnect.domain.repository.OrderRepository
 import com.example.careconnect.domain.repository.PatientRepository
 import com.example.careconnect.util.DateHelper.isToday
+import com.example.careconnect.util.ResourceHelper
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -26,6 +31,9 @@ class HomeViewModel(
 ) : ViewModel() {
 
     private val uid = authRepo.currentUserId
+
+    private val _errorMessage = MutableStateFlow<String?>(null)
+    val errorMessage = _errorMessage.asStateFlow()
 
     val employees: StateFlow<List<Employee>> = employeeRepo.getEmployees()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
@@ -53,6 +61,11 @@ class HomeViewModel(
         val id = uid ?: return
         viewModelScope.launch {
             employeeRepo.updateStatus(id, status)
+                .onFailure { e -> _errorMessage.update { ResourceHelper.getString(R.string.fehler_beim_speichern, e.message.orEmpty()) } }
         }
+    }
+
+    fun dismissError() {
+        _errorMessage.update { null }
     }
 }
