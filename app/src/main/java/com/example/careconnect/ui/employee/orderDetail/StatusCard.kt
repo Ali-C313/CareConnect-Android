@@ -25,6 +25,7 @@ import com.example.careconnect.ui.theme.color
 import com.example.careconnect.ui.theme.icon
 import com.example.careconnect.util.DateHelper.toDateTimeString
 
+/** Aktueller Status des Auftrags */
 @Composable
 fun StatusCard(
     order: Order,
