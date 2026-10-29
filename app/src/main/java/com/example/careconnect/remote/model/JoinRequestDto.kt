@@ -21,6 +21,7 @@ data class JoinRequestDto(
     val status: String? = null,
     val createdAt: Timestamp? = null
 )
+
 fun JoinRequestDto.toJoinRequest(uid: String): JoinRequest = JoinRequest(
     orgId = orgId ?: "",
     orgName = orgName ?: "",
