@@ -69,7 +69,7 @@ fun CareMap(
                 )
             }
         } else {
-            OsmMap(
+            LibreMap(
                 markers = markers,
                 modifier = Modifier.fillMaxSize(),
                 route = route
