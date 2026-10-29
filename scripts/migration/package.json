@@ -1,9 +1,0 @@
-{
-  "name": "careconnect-migration",
-  "private": true,
-  "description": "Kopiert die alten Daten in eine Organisation",
-  "main": "migrate-to-organization.js",
-  "dependencies": {
-    "firebase-admin": "^13.0.0"
-  }
-}
