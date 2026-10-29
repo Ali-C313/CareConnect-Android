@@ -3,6 +3,7 @@ package com.example.careconnect.remote.model
 import com.example.careconnect.domain.model.UserProfile
 import com.google.firebase.Timestamp
 
+// users/{uid}
 data class UserProfileDto(
     val firstName: String? = null,
     val lastName: String? = null,
