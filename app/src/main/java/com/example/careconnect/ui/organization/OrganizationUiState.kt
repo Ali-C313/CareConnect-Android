@@ -3,6 +3,7 @@ package com.example.careconnect.ui.organization
 import com.example.careconnect.domain.model.Organization
 import com.example.careconnect.domain.model.OrganizationType
 
+// Eingaben und Status bei Beitritt oder Gründung
 data class OrganizationUiState(
     val code: String = "",
     val orgName: String = "",
