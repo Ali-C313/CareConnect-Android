@@ -55,7 +55,6 @@ class EmployeeRepositoryImpl(
 
     override suspend fun updateStatus(id: String, status: StaffStatus): Result<Unit> = runCatching {
         employeesRef().document(id).update("status", status.value).await()
-        Unit
     }
 
     override suspend fun updateProfile(
@@ -67,12 +66,10 @@ class EmployeeRepositoryImpl(
     ): Result<Unit> = runCatching {
         val dto = EmployeeProfileUpdateDto(firstName, lastName, role, email)
         employeesRef().document(id).set(dto, SetOptions.merge()).await()
-        Unit
     }
 
     override suspend fun updateProfileImage(id: String, url: String): Result<Unit> = runCatching {
         employeesRef().document(id).update("profileImageURL", url).await()
-        Unit
     }
 
     override fun getDocuments(employeeId: String): Flow<List<EmployeeDocument>> = session.inOrg(emptyList()) { orgId ->
@@ -105,7 +102,6 @@ class EmployeeRepositoryImpl(
             .collection(CollectionNames.DOCUMENTS)
             .add(dto)
             .await()
-        Unit
     }
 
     override suspend fun deleteDocument(employeeId: String, documentId: String): Result<Unit> = runCatching {
@@ -119,6 +115,5 @@ class EmployeeRepositoryImpl(
             storageRepo.deleteFile(storagePath)
         }
         docRef.delete().await()
-        Unit
     }
 }
