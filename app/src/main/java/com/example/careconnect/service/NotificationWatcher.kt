@@ -9,7 +9,7 @@ import com.example.careconnect.domain.repository.EmployeeRepository
 import com.example.careconnect.domain.repository.OrderRepository
 import com.example.careconnect.domain.repository.PrescriptionRepository
 import com.example.careconnect.domain.repository.SettingsRepository
-import com.example.careconnect.platform.Notifier
+import com.example.careconnect.device.Notifier
 import com.example.careconnect.util.DateHelper.toDateTimeString
 import com.example.careconnect.util.ResourceHelper
 import kotlinx.coroutines.coroutineScope
