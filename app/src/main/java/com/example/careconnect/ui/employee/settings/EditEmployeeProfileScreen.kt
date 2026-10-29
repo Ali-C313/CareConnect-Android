@@ -38,6 +38,7 @@ import com.example.careconnect.ui.components.SectionCard
 import com.example.careconnect.ui.theme.CareConnectTheme
 import org.koin.androidx.compose.koinViewModel
 
+/** Mitarbeiter bearbeitet Profil und Passwort */
 @Composable
 fun EditEmployeeProfileScreen(
     onBack: () -> Unit,
